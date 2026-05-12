@@ -97,6 +97,18 @@
 
 @media (max-width: 576px) {
   .policy-modal-content {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .policy-modal-body h2 {
+    font-size: 1.5rem;
+  }
+  
+  .policy-text h3 {
+    font-size: 1.1rem;
+  }
+  
+  .policy-text p, .policy-text li {
+    font-size: 0.9rem;
   }
 }
