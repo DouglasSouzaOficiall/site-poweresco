@@ -1,0 +1,101 @@
+.awards-section {
+  position: relative;
+  padding: 10rem 0;
+  background: url('../assets/backpremios.png') center/cover no-repeat fixed;
+  color: var(--color-white);
+  overflow: hidden;
+  /* Propriedades para melhorar a nitidez da imagem no navegador */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+}
+
+.awards-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(26, 31, 36, 0.9) 0%, rgba(118, 224, 94, 0.4) 100%);
+  z-index: 1;
+}
+
+.awards-container {
+  position: relative;
+  z-index: 2;
+}
+
+.awards-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.awards-title {
+  color: var(--color-white);
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.awards-desc {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+
+.award-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  gap: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.award-item:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.award-icon {
+  background: var(--color-primary);
+  color: var(--color-bg-dark);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.award-content h3 {
+  color: var(--color-white);
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.award-content p {
+  font-size: 1rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .awards-title {
+    font-size: 2.2rem;
+  }
+}
