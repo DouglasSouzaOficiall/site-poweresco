@@ -1,5 +1,6 @@
 import { Zap, TrendingUp, Heart, Globe } from 'lucide-react';
 import imagemProjetos from '../assets/imagemprojetos.png';
+import imagemQuemSomos from '../assets/imagemquemsomos.png';
 import './Services.css';
 
 const services = [
@@ -81,7 +82,7 @@ const Services: React.FC = () => {
           <div className="services-image-column">
             <div className="services-image-wrapper">
               <img 
-                src="/img/imagemquemsomos.png" 
+                src={imagemQuemSomos} 
                 alt="Projetos de sustentabilidade Poweresco" 
                 className="services-image"
               />

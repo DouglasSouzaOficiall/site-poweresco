@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ContactModal from './ContactModal';
+import heroImg from '../assets/imagem_hero.png';
 import './Hero.css';
 
 const Hero: React.FC = () => {
@@ -24,7 +25,7 @@ const Hero: React.FC = () => {
       <div className="hero-image-wrapper">
         <div className="container">
           <img 
-            src="/img/imagem_hero.png" 
+            src={heroImg} 
             alt="Poweresco Sustentabilidade" 
             className="hero-main-image"
           />

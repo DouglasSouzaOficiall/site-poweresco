@@ -6,6 +6,7 @@ import iconFb from '../assets/Group 2591.png';
 import iconIg from '../assets/Group 2592.png';
 import iconYt from '../assets/Group 2593.png';
 import iconIn from '../assets/Group 2594.png';
+import logo from '../assets/logo.svg';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +30,7 @@ const Navbar: React.FC = () => {
         <div className="container nav-container">
           <div className="logo">
             <a href="#home">
-              <img src="/img/logo.svg" alt="Poweresco" />
+              <img src={logo} alt="Poweresco" />
             </a>
           </div>
 
