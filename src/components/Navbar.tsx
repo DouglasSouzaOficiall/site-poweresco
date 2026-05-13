@@ -43,6 +43,13 @@ const Navbar: React.FC = () => {
             <li><a href="#parceiros" onClick={() => setIsMobileMenuOpen(false)}>Parceiros</a></li>
             <li><a href="#contato" onClick={() => setIsMobileMenuOpen(false)}>Trabalhe Conosco</a></li>
           </ul>
+
+          <div className="social-icons mobile-socials">
+            <a href="#"><img src={iconFb} alt="Facebook" /></a>
+            <a href="#"><img src={iconIg} alt="Instagram" /></a>
+            <a href="#"><img src={iconYt} alt="YouTube" /></a>
+            <a href="#"><img src={iconIn} alt="LinkedIn" /></a>
+          </div>
         </div>
 
         <div className="social-icons nav-social">
