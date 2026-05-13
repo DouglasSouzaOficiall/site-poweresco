@@ -38,8 +38,7 @@ const Navbar: React.FC = () => {
           <ul>
             <li><a href="#home" className="active" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
             <li><a href="#quem-somos" onClick={() => setIsMobileMenuOpen(false)}>Quem Somos</a></li>
-            <li><a href="#o-que-fazemos" onClick={() => setIsMobileMenuOpen(false)}>O que fazemos</a></li>
-            <li><a href="#projetos" onClick={() => setIsMobileMenuOpen(false)}>Projetos Power</a></li>
+            <li><a href="#projetos" onClick={() => setIsMobileMenuOpen(false)}>Projetos</a></li>
             <li><a href="#parceiros" onClick={() => setIsMobileMenuOpen(false)}>Parceiros</a></li>
             <li><a href="#contato" onClick={() => setIsMobileMenuOpen(false)}>Trabalhe Conosco</a></li>
           </ul>
@@ -52,7 +51,12 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-
+        <div className="social-icons nav-social">
+          <a href="#"><img src={iconFb} alt="Facebook" /></a>
+          <a href="#"><img src={iconIg} alt="Instagram" /></a>
+          <a href="#"><img src={iconYt} alt="YouTube" /></a>
+          <a href="#"><img src={iconIn} alt="LinkedIn" /></a>
+        </div>
         
         <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X size={28} color="#fff" /> : <Menu size={28} color="#fff" />}
