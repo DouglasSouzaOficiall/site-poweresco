@@ -16,16 +16,17 @@
 .modal-content {
   background-color: var(--color-bg-dark);
   color: #fff;
-  width: 100%;
-  max-width: 550px; /* Slightly narrower */
-  max-height: 95vh; /* Prevents overflow */
-  overflow-y: auto; /* Adds scroll if content is too tall */
+  width: 95%; 
+  max-width: 480px; /* Reduced as requested */
+  max-height: 90vh;
+  overflow-y: auto;
   border-radius: 20px;
-  padding: 2.5rem;
+  padding: 2rem;
   position: relative;
   box-shadow: 0 25px 50px rgba(0,0,0,0.5);
   border: 1px solid rgba(118, 224, 94, 0.3);
   animation: modalFadeIn 0.3s ease;
+  margin: auto;
 }
 
 .modal-content::-webkit-scrollbar {

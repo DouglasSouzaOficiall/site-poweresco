@@ -1,6 +1,6 @@
 .hero-section {
   background-color: var(--color-bg-dark);
-  padding: 10rem 0 4rem;
+  padding: 10rem 40px 4rem; /* Added 40px horizontal padding as requested */
   text-align: left;
 }
 
@@ -11,16 +11,16 @@
 
 .hero-top-text {
   color: var(--color-primary);
-  font-size: 1.5rem;
+  font-size: 1.1rem; /* Reduced from 1.5rem */
   font-weight: 500;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-title {
   color: #fff;
-  font-size: 3rem; /* Reduced from 3.5rem to fit better in 3 lines */
+  font-size: 2.5rem; /* Reduced from 3rem */
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: 2.5rem;
 }
 

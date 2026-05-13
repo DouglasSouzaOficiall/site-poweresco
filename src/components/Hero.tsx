@@ -13,9 +13,11 @@ const Hero: React.FC = () => {
         <div className="hero-content">
           <p className="hero-top-text">Impulsionando o amanhã, de forma sustentável</p>
           <h1 className="hero-title">
-            Sua empresa socialmente justa,<br />
-            Ambientalmente Responsável<br />
-            e financeiramente Viável
+            Sua empresa<br />
+            socialmente justa,<br />
+            Ambientalmente<br />
+            Responsável e<br />
+            financeiramente Viável
           </h1>
           <button className="btn-green" onClick={() => setIsModalOpen(true)}>Fale conosco agora mesmo</button>
         </div>

@@ -93,9 +93,31 @@
 @media (max-width: 992px) {
   .awards-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .awards-title {
     font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .awards-section {
+    padding: 6rem 0;
+  }
+  
+  .award-item {
+    padding: 2rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .awards-header {
+    margin-bottom: 3rem;
+  }
+
+  .awards-title {
+    font-size: 1.8rem;
   }
 }
