@@ -1,6 +1,6 @@
 .hero-section {
   background-color: var(--color-bg-dark);
-  padding: 10rem 40px 4rem; /* Added 40px horizontal padding as requested */
+  padding: 12rem 0 6rem; /* Increased top padding from 10rem to lower text */
   text-align: left;
 }
 
@@ -38,7 +38,8 @@
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.2rem;
+    font-size: 1.6rem; /* Reduced from 2.2rem for mobile */
+    line-height: 1.3;
   }
   
   .hero-top-text {
@@ -46,7 +47,7 @@
   }
   
   .hero-section {
-    padding-top: 8rem;
+    padding-top: 10rem; /* Increased from 8rem to keep distance from menu */
   }
 
   .hero-image-wrapper {
