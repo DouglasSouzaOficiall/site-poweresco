@@ -8,6 +8,7 @@ import Partners from './components/Partners';
 import Awards from './components/Awards';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import CookieConsent from './components/CookieConsent';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <CookieConsent />
     </>
   );
 }
