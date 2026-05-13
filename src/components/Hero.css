@@ -1,6 +1,6 @@
 .hero-section {
   background-color: var(--color-bg-dark);
-  padding: 80px 0 0; /* Set top padding to 80px as requested */
+  padding: 10rem 0 4rem;
   text-align: left;
 }
 
@@ -11,14 +11,14 @@
 
 .hero-top-text {
   color: var(--color-primary);
-  font-size: 1.1rem; /* Reduced from 1.5rem */
+  font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero-title {
   color: #fff;
-  font-size: 40px; /* Adjusted to 40px as requested */
+  font-size: 3rem; /* Reduced from 3.5rem to fit better in 3 lines */
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 2.5rem;
@@ -38,8 +38,7 @@
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 30px; /* Set to 30px as requested */
-    line-height: 1.2;
+    font-size: 2.2rem;
   }
   
   .hero-top-text {
@@ -47,7 +46,7 @@
   }
   
   .hero-section {
-    padding: 80px 0 0; /* Keep 80px top padding on mobile too */
+    padding-top: 8rem;
   }
 
   .hero-image-wrapper {
