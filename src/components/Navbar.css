@@ -119,7 +119,7 @@
 
 @media (max-width: 992px) {
   .nav-social {
-    display: none;
+    display: none !important;
   }
   
   .mobile-menu-btn {
