@@ -52,12 +52,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
 
-        <div className="social-icons nav-social">
-          <a href="#"><img src={iconFb} alt="Facebook" /></a>
-          <a href="#"><img src={iconIg} alt="Instagram" /></a>
-          <a href="#"><img src={iconYt} alt="YouTube" /></a>
-          <a href="#"><img src={iconIn} alt="LinkedIn" /></a>
-        </div>
+
         
         <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X size={28} color="#fff" /> : <Menu size={28} color="#fff" />}
