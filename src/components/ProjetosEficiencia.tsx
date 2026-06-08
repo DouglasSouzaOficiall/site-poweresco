@@ -3,7 +3,6 @@ import ContactModal from './ContactModal';
 import img1 from '../assets/rebrand/eficiencia/WhatsApp Image 2026-05-08 at 13.26.31 (1) 1.png';
 import img2 from '../assets/rebrand/eficiencia/WhatsApp Image 2026-05-20 at 11.31.30 1.png';
 import img3 from '../assets/rebrand/eficiencia/WhatsApp Image 2026-05-29 at 10.12.15 1.png';
-import ellipse4 from '../assets/rebrand/eficiencia/Ellipse 4.png';
 import './ProjetosEficiencia.css';
 
 const ProjetosEficiencia: React.FC = () => {
@@ -26,22 +25,32 @@ const ProjetosEficiencia: React.FC = () => {
               <div className="efi-img-card bottom-img">
                 <img src={img3} alt="Carregando veículo" />
               </div>
-              
-              {/* Decorative curved ellipse */}
-              <img src={ellipse4} alt="Decoration curve" className="efi-decor-ellipse" />
             </div>
           </div>
 
           {/* Right Column: Title and CTA */}
           <div className="efi-content animate-fade-right">
             <h2 className="efi-title">
-              PROJETOS DE <br />
-              <span className="efi-badge-orange">EFICIÊNCIA ENERGÉTICA</span> <br />
+              PROJETOS DE <span className="efi-badge-orange">EFICIÊNCIA ENERGÉTICA</span> <br />
               E IMPACTO SOCIAL
             </h2>
             
+            <p className="efi-paragraph">
+              A Poweresco transforma comunidades por meio de projetos integrados. Nossa atuação vai do planejamento à execução em campo, oferecendo:
+            </p>
+
+            <ul className="efi-list">
+              <li><strong>Sustentabilidade:</strong> Substituição de equipamentos por tecnologias econômicas.</li>
+              <li><strong>Educação:</strong> Conscientização sobre o consumo de energia consciente.</li>
+              <li><strong>Excelência:</strong> Gestão logística, segurança operacional e rastreabilidade total.</li>
+            </ul>
+
+            <p className="efi-paragraph">
+              Nosso compromisso vai além da operação: unimos sustentabilidade, educação e impacto social. Atuando em vários estados do Brasil, desenvolvemos projetos alinhados aos Programas de Eficiência Energética das concessionárias, reduzindo o desperdício de energia e levando inovação e consciência ambiental para milhares de famílias.
+            </p>
+            
             <div className="efi-cta-wrapper">
-              <button className="btn-hero" onClick={() => setIsModalOpen(true)}>
+              <button className="efi-btn" onClick={() => setIsModalOpen(true)}>
                 Fale com a gente! <span className="arrow-diagonal">↗</span>
               </button>
             </div>
