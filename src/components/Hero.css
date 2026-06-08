@@ -1,9 +1,11 @@
 .hero-section {
-  background-color: var(--color-bg-dark);
-  padding: 10rem 0 6rem 0; /* Padding for header overlap */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10rem 0 0 0; /* Padding for header overlap, 0 bottom to anchor image */
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   position: relative;
   overflow: hidden;
 }
@@ -13,6 +15,7 @@
   grid-template-columns: 1.1fr 0.9fr;
   gap: 3rem;
   align-items: center;
+  width: 100%;
 }
 
 .hero-content {
@@ -21,7 +24,7 @@
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3.2rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 2rem;
@@ -61,7 +64,9 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background-color: var(--color-primary-dark);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: var(--color-white);
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 1rem 2.5rem;
@@ -74,10 +79,10 @@
 }
 
 .btn-hero:hover {
-  background-color: var(--color-primary-light);
-  border-color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0, 104, 55, 0.3);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
 }
 
 .arrow-diagonal {
@@ -94,7 +99,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   height: 100%;
 }
 
@@ -108,26 +113,20 @@
 .man-image {
   width: 100%;
   height: auto;
-  border-radius: 0 0 100px 100px;
+  border-radius: 0;
   object-fit: cover;
+  display: block;
 }
 
 /* Shape decoration positioning */
 .hero-shape {
-  position: absolute;
-  bottom: -40px;
-  right: -60px;
-  width: 120%;
-  max-width: 700px;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.95;
+  display: none;
 }
 
 /* Responsive styles */
 @media (max-width: 1024px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   
   .hero-shape {
@@ -138,7 +137,7 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 7rem 0 4rem 0;
+    padding: 7rem 0 0 0;
   }
 
   .hero-container {

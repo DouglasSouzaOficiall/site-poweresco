@@ -21,13 +21,13 @@
 }
 
 .logo img {
-  height: 48px;
+  height: 62px;
   width: auto;
   transition: var(--transition-smooth);
 }
 
 .navbar.scrolled .logo img {
-  height: 40px;
+  height: 52px;
 }
 
 .desktop-nav {
@@ -92,8 +92,8 @@
 }
 
 .social-icons img {
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   filter: brightness(0) invert(1); /* Makes icons white */
 }
 
@@ -159,7 +159,7 @@
   }
   
   .mobile-socials img {
-    width: 24px;
-    height: 24px;
+    width: 31px;
+    height: 31px;
   }
 }

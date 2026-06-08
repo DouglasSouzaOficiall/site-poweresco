@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ContactModal from './ContactModal';
 import manImg from '../assets/rebrand/hero/homem.png';
-import shapeImg from '../assets/rebrand/hero/Shape1.png';
+import backHero from '../assets/rebrand/hero/back_hero.png';
 import './Hero.css';
 
 const Hero: React.FC = () => {
@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      <section id="home" className="hero-section">
+      <section id="home" className="hero-section" style={{ backgroundImage: `url(${backHero})` }}>
         <div className="container hero-container">
           <div className="hero-content animate-fade-left">
             <h1 className="hero-title">
@@ -30,7 +30,6 @@ const Hero: React.FC = () => {
             <div className="man-image-wrapper">
               <img src={manImg} alt="Profissional Poweresco" className="man-image" />
             </div>
-            <img src={shapeImg} alt="Wave Decoration" className="hero-shape" />
           </div>
         </div>
       </section>
