@@ -3,7 +3,7 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 10rem 0 0 0; /* Padding for header overlap, 0 bottom to anchor image */
-  height: 920px;
+  height: 720px;
   display: flex;
   align-items: stretch;
   position: relative;
