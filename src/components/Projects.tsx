@@ -1,31 +1,31 @@
 import React from 'react';
-import img6 from '../assets/image 6.png';
-import img7 from '../assets/image 7.png';
-import img8 from '../assets/image 8.png';
-import img9 from '../assets/image 9.png';
-import img10 from '../assets/image 10.png';
-import img11 from '../assets/image 11.png';
+import img6 from '../assets/rebrand/image 6.png';
+import img7 from '../assets/rebrand/image 7.png';
+import img8 from '../assets/rebrand/image 8.png';
+import img9 from '../assets/rebrand/image 9.png';
+import img10 from '../assets/rebrand/image 10.png';
+import img11 from '../assets/rebrand/image 11.png';
 import './Projects.css';
 
 const projects = [
   {
-    title: 'APAE - LARANJAL\nDO JARI - AMAPÁ',
+    title: 'APAE - LARANJAL DO JARI - AMAPÁ',
     img: img6
   },
   {
-    title: 'ESCOLAS\nMUNICIPAIS E\nESTADUAIS DE SP',
+    title: 'ESCOLA MUNICIPAL ESTELITA ROCHA',
     img: img7
   },
   {
-    title: 'HOSPITAL\nBENEFICÊNCIA\nPORTUGUESA',
+    title: 'HOSPITAL BENEFICÊNCIA PORTUGUESA',
     img: img8
   },
   {
-    title: 'HOSPITAL AC\nCAMARGO',
+    title: 'HOSPITAL DO CÂNCER',
     img: img9
   },
   {
-    title: 'UNIDADES\nHABITACIONAIS - CDHU',
+    title: 'UNIDADE BÁSICA DE SAÚDE - UBS 2',
     img: img10
   },
   {
@@ -36,9 +36,10 @@ const projects = [
 
 const Projects: React.FC = () => {
   return (
-    <section className="projects-section">
+    <section id="projetos" className="projects-section">
       <div className="container">
-        <div className="projects-header">
+        
+        <div className="projects-header animate-fade-up">
           <h2 className="projects-title">PROJETOS POWER</h2>
           <p className="projects-subtitle">
             Alguns projetos realizados pela Poweresco, no brasil
@@ -47,20 +48,19 @@ const Projects: React.FC = () => {
 
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <div key={index} className="project-card">
-              <div className="project-image-wrapper">
+            <div key={index} className="project-card-rebrand animate-fade-up">
+              <div className="project-image-wrapper-rebrand">
                 <img 
                   src={project.img} 
-                  alt={project.title.replace(/\n/g, ' ')} 
-                  className="project-image" 
+                  alt={project.title} 
+                  className="project-image-rebrand" 
                 />
-                <div className="project-overlay">
-                  <h3 className="project-card-title">{project.title}</h3>
-                </div>
               </div>
+              <h3 className="project-card-title-rebrand">{project.title}</h3>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

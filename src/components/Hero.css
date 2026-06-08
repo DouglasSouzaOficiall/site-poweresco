@@ -1,55 +1,174 @@
 .hero-section {
   background-color: var(--color-bg-dark);
-  padding: 10rem 0 3rem;
-  text-align: left;
+  padding: 10rem 0 6rem 0; /* Padding for header overlap */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
 }
 
 .hero-content {
-  max-width: 1000px; /* Increased to allow text to fit exactly like image */
-  margin-bottom: 3rem;
-}
-
-.hero-top-text {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  font-weight: 400; /* Thinner weight like the image */
-  margin-bottom: 1rem;
+  color: var(--color-white);
+  z-index: 10;
 }
 
 .hero-title {
-  color: #fff;
-  font-size: 3.5rem; /* Larger font size to match image */
-  font-weight: 400; /* Thinner weight to match image exactly */
-  line-height: 1.1;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.hero-badge-orange {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: 0.2rem 1.2rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.hero-badge-white {
+  background-color: var(--color-white);
+  color: var(--color-primary-dark);
+  padding: 0.2rem 1.2rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.hero-text-white {
+  color: var(--color-white);
+}
+
+.hero-desc {
+  font-size: 1.15rem;
+  font-family: var(--font-body);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2.5rem;
+  max-width: 580px;
 }
 
-.hero-image-wrapper {
-  background: linear-gradient(to bottom, var(--color-bg-dark) 50%, #fff 50%);
+/* Rounded green button with arrow */
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-family: var(--font-headings);
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-hero:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 104, 55, 0.3);
+}
+
+.arrow-diagonal {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-hero:hover .arrow-diagonal {
+  transform: translate(3px, -3px);
+}
+
+/* Right side Image Wrapper */
+.hero-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.man-image-wrapper {
+  z-index: 2;
+  position: relative;
   width: 100%;
+  max-width: 480px;
 }
 
-.hero-main-image {
+.man-image {
   width: 100%;
   height: auto;
-  border-radius: 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 100px 100px;
+  object-fit: cover;
+}
+
+/* Shape decoration positioning */
+.hero-shape {
+  position: absolute;
+  bottom: -40px;
+  right: -60px;
+  width: 120%;
+  max-width: 700px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.95;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-shape {
+    width: 130%;
+    right: -40px;
+  }
 }
 
 @media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.2rem;
-  }
-  
-  .hero-top-text {
-    font-size: 1.1rem;
-  }
-  
   .hero-section {
-    padding-top: 8rem;
+    padding: 7rem 0 4rem 0;
   }
 
-  .hero-image-wrapper {
-    background: linear-gradient(to bottom, var(--color-bg-dark) 50%, #fff 50%);
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+
+  .hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-hero {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-image-container {
+    margin-top: 2rem;
+  }
+
+  .hero-shape {
+    bottom: -20px;
+    right: -20px;
+    width: 110%;
+  }
+
+  .hero-badge-orange, .hero-badge-white {
+    padding: 0.1rem 0.8rem;
+    border-radius: 8px;
   }
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Target, Zap, Leaf, Users, MapPin } from 'lucide-react';
+import imgSobre from '../assets/rebrand/sobre a power/img_sobre.png';
+import ellipse1 from '../assets/rebrand/sobre a power/Ellipse 1.png';
 import './About.css';
 
 interface CountUpProps {
@@ -34,7 +35,6 @@ const CountUp: React.FC<CountUpProps> = ({
           const step = (timestamp: number) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            // easeOutQuart
             const easeProgress = 1 - Math.pow(1 - progress, 4);
             
             setCount(easeProgress * end);
@@ -69,42 +69,56 @@ const CountUp: React.FC<CountUpProps> = ({
     return prefix + formatted + suffix;
   };
 
-  return <h3 className="stat-value" ref={ref}>{formatNumber(count)}</h3>;
+  return <h3 className="about-stat-value" ref={ref}>{formatNumber(count)}</h3>;
 };
 
 const stats = [
-  { end: 16, prefix: '+', label: 'projetos de alto impacto', icon: <Target size={40} color="var(--color-primary)" /> },
-  { end: 105, prefix: '+', label: 'Gwh/ano economizados', icon: <Zap size={40} color="var(--color-primary)" /> },
-  { end: 3500, prefix: '+', separator: '.', label: 'TCO2/ano retirados da atmosfera', icon: <Leaf size={40} color="var(--color-primary)" /> },
-  { end: 2.7, prefix: '+', suffix: ' MM', decimals: 1, decimalChar: ',', label: 'pessoas impactadas diretamente', icon: <Users size={40} color="var(--color-primary)" /> },
-  { end: 6, label: 'Estados presentes', icon: <MapPin size={40} color="var(--color-primary)" /> },
+  { end: 16, prefix: '+', label: 'projetos de alto impacto' },
+  { end: 105, prefix: '+', label: 'Gwh/ano economizados' },
+  { end: 3500, prefix: '+', separator: '.', label: 'TCO2/ano retirados da atmosfera' },
+  { end: 2.7, prefix: '+', suffix: ' MM', decimals: 1, decimalChar: ',', label: 'pessoas impactadas diretamente' },
+  { end: 6, label: 'Estados presentes' },
 ];
 
 const About: React.FC = () => {
   return (
     <section id="quem-somos" className="about-section">
       <div className="container">
-        <div className="about-header">
-          <h2 className="about-title">QUEM SOMOS</h2>
-          <div className="about-content">
-            <p className="about-main-text">
-              <strong>Nossa história completa 16 anos de impacto:</strong>
-            </p>
-            <p className="about-sub-text">
+        
+        {/* Main Content Layout */}
+        <div className="about-main-layout">
+          <div className="about-text-column animate-fade-left">
+            <div className="about-subtitle-tag">
+              SOBRE A <span className="about-badge-power">POWER</span>
+            </div>
+            <h2 className="about-heading-title">
+              Nossa história completa 16 anos de impacto:
+            </h2>
+            <p className="about-paragraph-text">
               criamos e materializamos soluções para empresas que, como nós, acreditam no equilíbrio entre desenvolvimento econômico e responsabilidade socioambiental para o futuro do país
             </p>
           </div>
+
+          <div className="about-image-column animate-fade-right">
+            <div className="about-image-container">
+              <img src={imgSobre} alt="Impacto Poweresco" className="about-main-img" />
+              <img src={ellipse1} alt="Decoration" className="about-ellipse-decor" />
+            </div>
+          </div>
         </div>
 
-        <div className="about-stats-grid">
-          {stats.map((stat, index) => (
-            <div key={index} className="stat-item">
-              <div className="stat-icon">{stat.icon}</div>
-              <CountUp {...stat} />
-              <p className="stat-label">{stat.label}</p>
-            </div>
-          ))}
+        {/* Stats Grid */}
+        <div className="about-stats-container">
+          <div className="about-stats-grid">
+            {stats.map((stat, index) => (
+              <div key={index} className="about-stat-item">
+                <CountUp {...stat} />
+                <p className="about-stat-label">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
+
       </div>
     </section>
   );

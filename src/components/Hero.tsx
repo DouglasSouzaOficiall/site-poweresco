@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ContactModal from './ContactModal';
-import heroImg from '../assets/imagem_hero.png';
+import manImg from '../assets/rebrand/hero/homem.png';
+import shapeImg from '../assets/rebrand/hero/Shape1.png';
 import './Hero.css';
 
 const Hero: React.FC = () => {
@@ -9,28 +10,30 @@ const Hero: React.FC = () => {
   return (
     <>
       <section id="home" className="hero-section">
-      <div className="container hero-container">
-        <div className="hero-content">
-          <p className="hero-top-text">Impulsionando o amanhã, de forma sustentável</p>
-          <h1 className="hero-title">
-            Sua empresa socialmente justa,<br />
-            Ambientalmente Responsável<br />
-            e financeiramente Viável
-          </h1>
-          <button className="btn-green" onClick={() => setIsModalOpen(true)}>Fale conosco agora mesmo</button>
+        <div className="container hero-container">
+          <div className="hero-content animate-fade-left">
+            <h1 className="hero-title">
+              <span className="hero-badge-orange">Sua Empresa</span> Justa,<br />
+              <span className="hero-badge-white">Responsável</span> e<br />
+              <span className="hero-text-white">Lucrativa.</span>
+            </h1>
+            <p className="hero-desc">
+              Desenvolvemos projetos sob medida para reduzir a fatura de energia da sua empresa, 
+              gerando impacto positivo em alinhamento com seus objetivos e metas financeiras reais.
+            </p>
+            <button className="btn-hero" onClick={() => setIsModalOpen(true)}>
+              Fale com a gente! <span className="arrow-diagonal">↗</span>
+            </button>
+          </div>
+          
+          <div className="hero-image-container animate-fade-right">
+            <div className="man-image-wrapper">
+              <img src={manImg} alt="Profissional Poweresco" className="man-image" />
+            </div>
+            <img src={shapeImg} alt="Wave Decoration" className="hero-shape" />
+          </div>
         </div>
-      </div>
       </section>
-      
-      <div className="hero-image-wrapper">
-        <div className="container">
-          <img 
-            src={heroImg} 
-            alt="Poweresco Sustentabilidade" 
-            className="hero-main-image"
-          />
-        </div>
-      </div>
       
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>

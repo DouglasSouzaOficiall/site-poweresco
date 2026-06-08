@@ -1,6 +1,7 @@
+import React, { useState } from 'react';
 import { Zap, TrendingUp, Heart, Globe } from 'lucide-react';
-import imagemProjetos from '../assets/imagemprojetos.png';
-import imagemQuemSomos from '../assets/imagemquemsomos.png';
+import ContactModal from './ContactModal';
+import backOquefazemos from '../assets/rebrand/o que fazemos/back_oquefazemos.png';
 import './Services.css';
 
 const services = [
@@ -48,28 +49,33 @@ const services = [
 ];
 
 const Services: React.FC = () => {
-  return (
-    <section id="projetos" className="services-section">
-      <div className="container">
-        <div className="services-header">
-          <h2 className="services-title">O QUE FAZEMOS</h2>
-          <p className="services-desc">
-            Criamos, implantamos e gerimos projetos de sustentabilidade para<br className="desktop-br" />
-            empresas que precisam tornar realidade seus objetivos de impacto.
-          </p>
-        </div>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-        <div className="services-content-layout">
+  return (
+    <>
+      <section id="o-que-fazemos" className="services-section">
+        {/* Background Image with Green Tint Overlay */}
+        <div className="services-bg-overlay" style={{ backgroundImage: `url(${backOquefazemos})` }}></div>
+        <div className="services-green-mask"></div>
+
+        <div className="container services-container">
+          
+          <div className="services-header animate-fade-up">
+            <h2 className="services-title">
+              O QUE <span className="services-badge-orange">FAZEMOS</span>
+            </h2>
+          </div>
+
           <div className="services-cards-grid">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <div key={index} className="service-card">
-                  <div className="service-card-icon">
-                    <Icon size={40} color="var(--color-primary)" strokeWidth={1.5} />
+                <div key={index} className="service-rebrand-card animate-fade-up">
+                  <div className="service-rebrand-icon-wrapper">
+                    <Icon size={28} className="service-rebrand-icon" />
                   </div>
-                  <h3 className="service-card-title">{service.title}</h3>
-                  <ul className="service-card-list">
+                  <h3 className="service-rebrand-title">{service.title}</h3>
+                  <ul className="service-rebrand-list">
                     {service.items.map((item, idx) => (
                       <li key={idx}>{item}</li>
                     ))}
@@ -79,29 +85,17 @@ const Services: React.FC = () => {
             })}
           </div>
 
-          <div className="services-image-column">
-            <div className="services-image-wrapper">
-              <img 
-                src={imagemQuemSomos} 
-                alt="Projetos de sustentabilidade Poweresco" 
-                className="services-image"
-              />
-            </div>
+          <div className="services-cta animate-fade-up">
+            <button className="btn-hero" onClick={() => setIsModalOpen(true)}>
+              Fale com a gente! <span className="arrow-diagonal">↗</span>
+            </button>
           </div>
+
         </div>
-      </div>
+      </section>
 
-      {/* Banner de Projetos em tela cheia */}
-      <div className="projects-banner-container">
-        <img 
-          src={imagemProjetos} 
-          alt="Nossos Projetos" 
-          className="projects-banner-image" 
-        />
-        <div className="projects-banner-accent"></div>
-      </div>
-
-    </section>
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 };
 
