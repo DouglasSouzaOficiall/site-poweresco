@@ -2,6 +2,7 @@
   background-color: var(--color-white);
   padding: 6rem 0;
   overflow: hidden;
+  position: relative;
 }
 
 .edu-container {
@@ -28,10 +29,10 @@
 }
 
 .edu-badge-lime {
-  background-color: #8be034; /* Lime green/yellow color */
-  color: var(--color-primary-dark);
-  padding: 0.1rem 0.8rem;
-  border-radius: 8px;
+  background-color: #abc212;
+  color: #fff;
+  padding: 0 0.5rem;
+  border-radius: 0;
   font-weight: 900;
 }
 
@@ -110,31 +111,46 @@
   display: block;
 }
 
-/* Staggering the cards */
+/* Removing staggering overrides so images are just rounded */
 .top-img {
-  align-self: flex-start;
-  border-radius: 30px 30px 30px 0;
 }
 
 .middle-img {
-  align-self: flex-end;
-  border-radius: 30px 0 30px 30px;
 }
 
 .bottom-img {
-  align-self: flex-start;
-  border-radius: 0 30px 30px 30px;
 }
 
 /* Orange shape in the background */
 .edu-decor-ellipse {
   position: absolute;
-  bottom: -30px;
-  right: -50px;
-  width: 120%;
-  z-index: 1;
+  top: 50%;
+  right: -20%;
+  transform: translateY(-50%);
+  height: 120%;
+  width: auto;
+  z-index: 0;
   pointer-events: none;
-  opacity: 0.95;
+}
+
+.edu-btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s;
+  align-self: flex-start;
+}
+.edu-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 104, 55, 0.4);
 }
 
 /* Responsive adjustment */
