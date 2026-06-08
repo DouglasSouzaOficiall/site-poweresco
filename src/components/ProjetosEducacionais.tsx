@@ -3,7 +3,6 @@ import ContactModal from './ContactModal';
 import img1 from '../assets/rebrand/educacional/WhatsApp Image 2026-04-08 at 07.54.24 (3) 1.png';
 import img2 from '../assets/rebrand/educacional/WhatsApp Image 2026-04-08 at 07.54.24 (3) 2.png';
 import img3 from '../assets/rebrand/educacional/WhatsApp Image 2026-04-08 at 07.54.24 (3) 3.png';
-import ellipse3 from '../assets/rebrand/educacional/Ellipse 3.png';
 import './ProjetosEducacionais.css';
 
 const ProjetosEducacionais: React.FC = () => {
@@ -43,8 +42,6 @@ const ProjetosEducacionais: React.FC = () => {
 
           {/* Right Column: Staggered/Curved Images */}
           <div className="edu-images-column animate-fade-right">
-            {/* Decorative curved ellipse */}
-            <img src={ellipse3} alt="Decoration curve" className="edu-decor-ellipse" />
             
             <div className="edu-images-wrapper">
               <div className="edu-img-card top-img">
