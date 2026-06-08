@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import imgSobre from '../assets/rebrand/sobre a power/img_sobre.png';
-import ellipse1 from '../assets/rebrand/sobre a power/Ellipse 1.png';
 import './About.css';
 
 interface CountUpProps {
@@ -102,7 +101,6 @@ const About: React.FC = () => {
           <div className="about-image-column animate-fade-right">
             <div className="about-image-container">
               <img src={imgSobre} alt="Impacto Poweresco" className="about-main-img" />
-              <img src={ellipse1} alt="Decoration" className="about-ellipse-decor" />
             </div>
           </div>
         </div>
