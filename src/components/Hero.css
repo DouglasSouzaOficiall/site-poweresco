@@ -107,7 +107,7 @@
 .man-image-wrapper {
   z-index: 2;
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   width: 100%;
   max-width: 480px;
 }
