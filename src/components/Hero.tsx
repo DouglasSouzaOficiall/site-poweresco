@@ -14,12 +14,12 @@ const Hero: React.FC = () => {
           <div className="hero-content animate-fade-left">
             <h1 className="hero-title">
               <span className="hero-badge-orange">Sua Empresa</span> Justa,<br />
-              <span className="hero-badge-white">Responsável</span> e<br />
-              <span className="hero-text-white">Lucrativa.</span>
+              Responsável e<br />
+              Lucrativa.
             </h1>
             <p className="hero-desc">
-              Desenvolvemos projetos sob medida para reduzir a fatura de energia da sua empresa, 
-              gerando impacto positivo em alinhamento com seus objetivos e metas financeiras reais.
+              Desenvolvemos projetos sob medida para adequar o seu negócio ao mercado.<br/>
+              Unimos impacto positivo na sociedade com resultados financeiros reais.
             </p>
             <button className="btn-hero" onClick={() => setIsModalOpen(true)}>
               Fale com a gente! <span className="arrow-diagonal">↗</span>

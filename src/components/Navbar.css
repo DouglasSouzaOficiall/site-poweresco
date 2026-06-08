@@ -95,7 +95,6 @@
 .social-icons img {
   width: 26px;
   height: 26px;
-  filter: brightness(0) invert(1); /* Makes icons white */
 }
 
 .mobile-menu-btn {

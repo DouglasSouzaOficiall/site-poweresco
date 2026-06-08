@@ -34,8 +34,8 @@ const Navbar: React.FC = () => {
             <li><a href="#home" className="active" onClick={() => setIsMobileMenuOpen(false)}>HOME</a></li>
             <li><a href="#quem-somos" onClick={() => setIsMobileMenuOpen(false)}>QUEM SOMOS</a></li>
             <li><a href="#projetos" onClick={() => setIsMobileMenuOpen(false)}>PROJETOS</a></li>
-            <li><a href="#o-que-fazemos" onClick={() => setIsMobileMenuOpen(false)}>O QUE FAZEMOS</a></li>
-            <li><a href="#contato" onClick={() => setIsMobileMenuOpen(false)}>FALE COM A GENTE</a></li>
+            <li><a href="#contato" onClick={() => setIsMobileMenuOpen(false)}>FALE CONOSCO</a></li>
+            <li><a href="#trabalhe" onClick={() => setIsMobileMenuOpen(false)}>TRABALHE COM A GENTE</a></li>
           </ul>
 
           <div className="social-icons mobile-socials">
