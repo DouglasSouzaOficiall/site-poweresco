@@ -1,175 +1,133 @@
 .hero-section {
+  height: 720px;
+  display: flex;
+  align-items: center;
+  background-image: url('/site-poweresco/img/imagem-hero-novo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 10rem 0 0 0; /* Padding for header overlap, 0 bottom to anchor image */
-  height: 720px;
-  display: flex;
-  align-items: stretch;
+  padding: 0;
   position: relative;
   overflow: hidden;
 }
 
+/* Dark green overlay */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(23, 102, 40, 0.7) 0%, rgba(23, 102, 40, 0.45) 100%);
+  z-index: 1;
+}
+
 .hero-container {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 3rem;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 2;
+  padding-top: 80px;
 }
 
 .hero-content {
-  color: var(--color-white);
-  z-index: 10;
+  color: #fff;
+  max-width: 640px;
 }
 
 .hero-title {
-  font-size: 3.2rem;
+  font-size: 50px;
   font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 2rem;
-}
-
-.hero-badge-orange {
-  background-color: var(--color-accent);
-  color: var(--color-white);
-  padding: 0 0.5rem;
-  border-radius: 0;
-  display: inline-block;
-}
-
-.hero-badge-white {
-  background-color: var(--color-white);
-  color: var(--color-primary-dark);
-  padding: 0.2rem 1.2rem;
-  border-radius: 12px;
-  display: inline-block;
-}
-
-.hero-text-white {
-  color: var(--color-white);
+  line-height: 1.1; /* Tighter line height */
+  margin-bottom: 10px; /* Removed large spacing */
+  color: #fff;
 }
 
 .hero-desc {
-  font-size: 1.15rem;
-  font-family: var(--font-body);
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2.5rem;
-  max-width: 580px;
+  font-size: 20px; /* H3 */
+  line-height: 1.4; /* Tighter line height */
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 30px;
+  max-width: 600px;
 }
 
-/* Rounded green button with arrow */
+/* Button — 45px height */
 .btn-hero {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: var(--color-white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-family: var(--font-headings);
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  height: 45px;
+  padding: 0 2rem;
+  font-size: 18px;
   font-weight: 600;
   border-radius: 50px;
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .btn-hero:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .arrow-diagonal {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: transform 0.3s ease;
 }
 
 .btn-hero:hover .arrow-diagonal {
-  transform: translate(3px, -3px);
+  transform: translate(2px, -2px);
 }
 
-/* Right side Image Wrapper */
-.hero-image-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  height: 100%;
-}
-
-.man-image-wrapper {
-  z-index: 2;
-  position: absolute;
-  bottom: -10px;
-  width: 100%;
-  max-width: 480px;
-}
-
-.man-image {
-  width: 100%;
-  height: auto;
-  border-radius: 0;
-  object-fit: cover;
-  display: block;
-}
-
-/* Shape decoration positioning */
-.hero-shape {
-  display: none;
-}
-
-/* Responsive styles */
-@media (max-width: 1024px) {
-  .hero-title {
-    font-size: 2.8rem;
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .hero-section {
+    height: 750px;
   }
-  
-  .hero-shape {
-    width: 130%;
-    right: -40px;
+  .hero-title {
+    font-size: 2.2rem;
   }
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 7rem 0 0 0;
+    height: 600px;
   }
-
   .hero-container {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-    text-align: center;
+    padding-top: 70px;
   }
-
+  .hero-title {
+    font-size: 1.8rem;
+  }
   .hero-desc {
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 0.9rem;
   }
-
   .btn-hero {
-    width: 100%;
-    justify-content: center;
+    height: 40px;
+    padding: 0 1.4rem;
+    font-size: 0.85rem;
   }
+}
 
-  .hero-image-container {
-    margin-top: 2rem;
+@media (max-width: 480px) {
+  .hero-section {
+    height: 520px;
   }
-
-  .hero-shape {
-    bottom: -20px;
-    right: -20px;
-    width: 110%;
+  .hero-title {
+    font-size: 1.5rem;
   }
-
-  .hero-badge-orange, .hero-badge-white {
-    padding: 0.1rem 0.8rem;
-    border-radius: 8px;
+  .hero-desc {
+    font-size: 0.85rem;
+    max-width: 100%;
   }
 }

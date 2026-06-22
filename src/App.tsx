@@ -1,31 +1,34 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import ProjetosEducacionais from './components/ProjetosEducacionais';
-import ProjetosEficiencia from './components/ProjetosEficiencia';
-import Projects from './components/Projects';
-import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
-import CookieConsent from './components/CookieConsent';
+import React, { useState, useEffect } from 'react';
+import Home from './pages/Home';
+import SolutionPage from './pages/SolutionPage';
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <ProjetosEducacionais />
-        <ProjetosEficiencia />
-        <Projects />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-      <CookieConsent />
-    </>
-  );
+  const [route, setRoute] = useState(window.location.hash || '#/');
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setRoute(window.location.hash || '#/');
+    };
+    
+    // Set initial hash if empty
+    if (!window.location.hash) {
+      window.history.replaceState(null, '', '#/');
+    }
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const renderPage = () => {
+    if (route.startsWith('#/solucoes/')) {
+      return <SolutionPage />;
+    }
+    
+    // Default to Home for '#/' or any unknown route
+    return <Home />;
+  };
+
+  return renderPage();
 }
 
 export default App;

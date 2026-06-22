@@ -1,0 +1,149 @@
+.solution-page-main {
+  background-color: #fff;
+}
+
+.solution-hero {
+  height: 400px;
+  background-image: url('/site-poweresco/img/imagem01_nossassolucoes.png'); /* Official image */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Green tint overlay */
+.solution-hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(23, 102, 40, 0.4);
+}
+
+.solution-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.solution-hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.bg-orange-highlight {
+  background-color: #F48220;
+  padding: 0 10px;
+  border-radius: 4px;
+}
+
+.solution-content-wrapper {
+  margin-top: -60px; /* Overlap effect */
+  position: relative;
+  z-index: 10;
+  padding-bottom: 80px;
+}
+
+.solution-white-card {
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 60px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.solution-main-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.solution-main-text {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.bold-text {
+  font-weight: 700;
+}
+
+.solution-columns {
+  display: flex;
+  gap: 60px;
+  margin-top: 50px;
+}
+
+.solution-col {
+  flex: 1;
+}
+
+.solution-col-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.solution-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.solution-list li {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.solution-carousel-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.solution-nav-btn {
+  background: transparent;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  color: #000;
+  transition: transform 0.2s;
+}
+
+.solution-nav-btn:hover {
+  transform: scale(1.1);
+}
+
+.solution-images-container {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 20px;
+}
+
+.solution-gallery-img {
+  width: 30%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+@media (max-width: 992px) {
+  .solution-columns {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .solution-gallery-img {
+    width: 100%;
+  }
+  .solution-images-container {
+    flex-direction: column;
+  }
+}

@@ -5,37 +5,26 @@ import backHero from '../assets/rebrand/hero/back_hero.png';
 import './Hero.css';
 
 const Hero: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
-    <>
-      <section id="home" className="hero-section" style={{ backgroundImage: `url(${backHero})` }}>
-        <div className="container hero-container">
-          <div className="hero-content animate-fade-left">
-            <h1 className="hero-title">
-              <span className="hero-badge-orange">Sua Empresa</span> Justa,<br />
-              Responsável e<br />
-              Lucrativa.
-            </h1>
-            <p className="hero-desc">
-              Desenvolvemos projetos sob medida para adequar o seu negócio ao mercado.<br/>
-              Unimos impacto positivo na sociedade com resultados financeiros reais.
-            </p>
-            <button className="btn-hero" onClick={() => setIsModalOpen(true)}>
-              Fale com a gente! <span className="arrow-diagonal">↗</span>
-            </button>
-          </div>
-          
-          <div className="hero-image-container animate-fade-right">
-            <div className="man-image-wrapper">
-              <img src={manImg} alt="Profissional Poweresco" className="man-image" />
-            </div>
-          </div>
+    <section id="home" className="hero-section">
+      <div className="container hero-container">
+        <div className="hero-content animate-fade-left">
+          <h1 className="hero-title">
+            16 anos transformando<br />
+            energia em desenvolvimento<br />
+            sustentável.
+          </h1>
+          <p className="hero-desc">
+            Projetamos, executamos e gerenciamos iniciativas de eficiência energética, educação, sustentabilidade, desenvolvimento social e impacto comunitário para concessionárias de energia e instituições em todo o Brasil.
+          </p>
+          <button className="btn-hero" onClick={() => {
+            document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' });
+          }}>
+            Conheça nossas soluções <span className="arrow-diagonal">↗</span>
+          </button>
         </div>
-      </section>
-      
-      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </>
+      </div>
+    </section>
   );
 };
 

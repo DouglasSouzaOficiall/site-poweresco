@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import imgSobre from '../assets/rebrand/sobre a power/img_sobre.png';
+import imgSobre from '../assets/rebrand/imagemquemsomos.png';
+import imgDiferenciais from '../assets/rebrand/imagemprojetos.png';
 import './About.css';
 
 interface CountUpProps {
@@ -29,7 +30,7 @@ const CountUp: React.FC<CountUpProps> = ({
         if (entry.isIntersecting && !hasAnimated) {
           setHasAnimated(true);
           let startTimestamp: number | null = null;
-          const duration = 2000; // 2 seconds
+          const duration = 2000;
 
           const step = (timestamp: number) => {
             if (!startTimestamp) startTimestamp = timestamp;
@@ -73,10 +74,10 @@ const CountUp: React.FC<CountUpProps> = ({
 
 const stats = [
   { end: 16, prefix: '+', label: 'projetos de alto impacto' },
-  { end: 105, prefix: '+', label: 'Gwh/ano economizados' },
-  { end: 3500, prefix: '+', separator: '.', label: 'TCO2/ano retirados da atmosfera' },
+  { end: 105, prefix: '+', label: 'GWh/ano economizados' },
+  { end: 3500, prefix: '+', separator: '.', label: 'TRCO2/ano evitados de emissões' },
   { end: 2.7, prefix: '+', suffix: ' MM', decimals: 1, decimalChar: ',', label: 'pessoas impactadas diretamente' },
-  { end: 6, label: 'Estados presentes' },
+  { end: 6, label: 'Estados atendidos' },
 ];
 
 const About: React.FC = () => {
@@ -84,39 +85,71 @@ const About: React.FC = () => {
     <section id="quem-somos" className="about-section">
       <div className="container">
         
-        {/* Main Content Layout */}
+        {/* Section: SOBRE A POWER */}
         <div className="about-main-layout">
           <div className="about-text-column animate-fade-left">
-            <div className="about-subtitle-tag">
-              SOBRE A <span className="about-badge-power">POWER</span>
-            </div>
             <h2 className="about-heading-title">
-              Nossa história completa 16 anos de impacto:
+              SOBRE A <span className="about-badge-power">POWER</span>
             </h2>
             <p className="about-paragraph-text">
-              criamos e materializamos soluções para empresas que, como nós, acreditam no equilíbrio entre desenvolvimento econômico e responsabilidade socioambiental para o futuro do país
+              A Poweresco é uma empresa especializada no desenvolvimento, implantação e gestão de projetos que unem eficiência energética, educação, sustentabilidade e transformação social.
+            </p>
+            <p className="about-paragraph-text">
+              Há 16 anos no mercado, atuamos em parceria com concessionárias de energia, órgãos públicos, instituições de ensino e organizações da sociedade civil, promovendo resultados mensuráveis e alinhados às diretrizes da ANEEL e aos Objetivos de Desenvolvimento Sustentável da ONU.
+            </p>
+            <p className="about-paragraph-text">
+              Com uma equipe multidisciplinar e processos estruturados, desenvolvemos soluções que geram impacto positivo para empresas, comunidades e territórios.
             </p>
           </div>
 
           <div className="about-image-column animate-fade-right">
             <div className="about-image-container">
-              <img src={imgSobre} alt="Impacto Poweresco" className="about-main-img" />
+              {/* Fallback to img_sobre.png if imagemquemsomos doesn't exist */}
+              <img src="/site-poweresco/img/imagem01_quem_somos.png" alt="Sobre a Power" className="about-main-img" />
             </div>
           </div>
         </div>
 
-        {/* Stats Grid */}
-        <div className="about-stats-container">
-          <div className="about-stats-grid">
-            {stats.map((stat, index) => (
-              <div key={index} className="about-stat-item">
-                <CountUp {...stat} />
-                <p className="about-stat-label">{stat.label}</p>
-              </div>
-            ))}
+        {/* Section: NOSSOS DIFERENCIAIS */}
+        <div className="about-main-layout reverse-layout" style={{ marginTop: '40px' }}>
+          <div className="about-image-column animate-fade-left">
+            <div className="about-image-container">
+              <img src="/site-poweresco/img/imagem02_quem_somos.png" alt="Diferenciais" className="about-main-img" />
+            </div>
+          </div>
+
+          <div className="about-text-column animate-fade-right" style={{ paddingLeft: '40px' }}>
+            <h2 className="about-heading-title">
+              NOSSOS <span className="about-badge-power">DIFERENCIAIS</span>
+            </h2>
+            <ul className="diferenciais-list" style={{ listStyle: 'disc', paddingLeft: '20px', fontSize: '1.1rem', lineHeight: '1.6', color: '#333' }}>
+              <li>16 anos de experiência</li>
+              <li>Atuação nacional</li>
+              <li>Projetos regulados pela ANEEL</li>
+              <li>Equipe multidisciplinar</li>
+              <li>Gestão completa de projetos</li>
+              <li>Certificação ISO 9001</li>
+              <li>Especialistas em mobilização social</li>
+              <li>Forte atuação em ESG e desenvolvimento sustentável</li>
+            </ul>
+            <div style={{ marginTop: '20px' }}>
+              <button className="btn-orange-pill" style={{ backgroundColor: '#F48220', borderRadius: '50px', width: '120px', height: '40px', border: 'none' }}></button>
+            </div>
           </div>
         </div>
 
+      </div>
+
+      {/* Stats Grid */}
+      <div className="about-stats-container">
+        <div className="about-stats-grid">
+          {stats.map((stat, index) => (
+            <div key={index} className="about-stat-item">
+              <CountUp {...stat} />
+              <p className="about-stat-label">{stat.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
