@@ -21,54 +21,55 @@ const Footer: React.FC = () => {
             {/* Column 1: Logo & Slogan */}
             <div className="footer-column footer-brand">
               <img src={logoBranco} alt="Poweresco" className="footer-logo" />
-              <p className="footer-brand-text italic-slogan">
-                Sua empresa socialmente justa,<br />
-                Ambientalmente Responsável e<br />
-                financeiramente Viável.
+              <p className="footer-brand-text">
+                SEU PARCEIRO EM EFICIÊNCIA ENERGÉTICA E<br />
+                TRANSFORMAÇÃO SOCIAL.
               </p>
             </div>
 
-            {/* Column 2: Menu / Carreira */}
+            {/* Column 2: Menu */}
             <div className="footer-column">
-              <h4 className="footer-title-green">CARREIRA</h4>
-              <ul className="footer-links-list mb-3">
-                <li><a href="#/#trabalhe">FAÇA PARTE DO TIME</a></li>
-              </ul>
-              
               <h4 className="footer-title-green">MENU</h4>
-              <ul className="footer-links-list">
+              <ul className="footer-nav">
+                <li><a href="#/">HOME</a></li>
                 <li><a href="#/#quem-somos">QUEM SOMOS</a></li>
-                <li><a href="#/#projetos">PROJETOS</a></li>
-                <li><a href="#/#contato">FALE CONOSCO</a></li>
-                <li><a href="#/#trabalhe">TRABALHE COM A GENTE</a></li>
+                <li><a href="#/#solucoes">SOLUÇÕES</a></li>
+                <li><a href="#/#cases">CASES</a></li>
+                <li><a href="#/#clientes">CLIENTES</a></li>
+                <li><a href="#/#impacto">IMPACTO</a></li>
+                <li><a href="#/#contato">CONTATO</a></li>
               </ul>
             </div>
 
             {/* Column 3: Contact */}
             <div className="footer-column">
               <h4 className="footer-title-green">CONTATO</h4>
-              <ul className="footer-links-list">
+              <ul className="footer-nav">
                 <li>
-                  SÃO PAULO: (11) 4883-2154<br />
-                  <span className="bold-address">RUA DA GÁVEA, 229</span>
+                  <span className="bold-address">MATRIZ:</span> AV. ANDRÉ ARAÚJO, 1924,<br />
+                  ALEIXO - MANAUS/AM
                 </li>
                 <li className="mt-2">
-                  GOIÂNIA: (11) 4883-2154<br />
-                  <span className="bold-address">RUA DA GÁVEA, 229</span>
+                  <span className="bold-address">FILIAL:</span> AV. PAULISTA, 171,<br />
+                  BELA VISTA - SÃO PAULO/SP
                 </li>
                 <li className="mt-2">
-                  CEARÁ: (11) 4883-2154<br />
-                  <span className="bold-address">RUA DA GÁVEA, 229</span>
+                  (11) 4883-2154
+                </li>
+                <li className="mt-2">
+                  contato@poweresco.com.br
                 </li>
               </ul>
             </div>
 
-            {/* Column 4: Outros */}
+            {/* Column 4: Social */}
             <div className="footer-column">
-              <h4 className="footer-title-green">OUTROS</h4>
-              <ul className="footer-links-list">
-                <li><a href="#" onClick={(e) => { e.preventDefault(); setIsPrivacyModalOpen(true); }}>POLÍTICA DE PRIVACIDADE</a></li>
-                <li><a href="#" onClick={(e) => { e.preventDefault(); }}>CÓDIGO DE ÉTICA E CONDUTA</a></li>
+              <h4 className="footer-title-green">SOCIAL</h4>
+              <ul className="footer-nav">
+                <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">Linkedin</a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://youtube.com" target="_blank" rel="noopener noreferrer">Youtube</a></li>
+                <li><a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
               </ul>
             </div>
 
@@ -80,7 +81,7 @@ const Footer: React.FC = () => {
       <div className="footer-bottom-lime">
         <div className="container footer-bottom-container">
           <div className="footer-copyright">
-            <strong>POWERESCO</strong> &nbsp;&nbsp;|&nbsp;&nbsp; 2023 | TODOS OS DIREITOS RESERVADOS
+            <strong>POWERESCO 2024.</strong> TODOS OS DIREITOS RESERVADOS
           </div>
           
           <div className="footer-social-wrapper">

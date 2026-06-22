@@ -23,9 +23,9 @@
 }
 
 .solutions-badge-white {
-  background-color: #fff;
-  color: #176628;
-  padding: 0 10px;
+  background-color: #A1D028; /* Light Green */
+  color: #fff;
+  padding: 4px 14px;
   border-radius: 4px;
 }
 

@@ -14,10 +14,8 @@ const Hero: React.FC = () => {
           <p className="hero-desc">
             Projetamos, executamos e gerenciamos iniciativas de eficiência energética, educação, sustentabilidade, desenvolvimento social e impacto comunitário para concessionárias de energia e instituições em todo o Brasil.
           </p>
-          <button className="btn-hero" onClick={() => {
-            document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' });
-          }}>
-            Conheça nossas soluções <span className="arrow-diagonal">↗</span>
+          <button className="btn-hero animate-fade-up" style={{ animationDelay: '0.4s' }} onClick={() => document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' })}>
+            Conheça nossas soluções ↗
           </button>
         </div>
       </div>
