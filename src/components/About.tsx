@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import imgSobre from '../assets/rebrand/imagemquemsomos.png';
-import imgDiferenciais from '../assets/rebrand/imagemprojetos.png';
 import './About.css';
 
 interface CountUpProps {

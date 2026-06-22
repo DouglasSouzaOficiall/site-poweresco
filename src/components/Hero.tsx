@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import ContactModal from './ContactModal';
-import manImg from '../assets/rebrand/hero/homem.png';
-import backHero from '../assets/rebrand/hero/back_hero.png';
+import React from 'react';
 import './Hero.css';
 
 const Hero: React.FC = () => {

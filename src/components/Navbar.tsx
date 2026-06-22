@@ -32,12 +32,12 @@ const Navbar: React.FC = () => {
         <div className={`desktop-nav ${isMobileMenuOpen ? 'open' : ''}`}>
           <ul>
             <li><a href="#/" className="active" onClick={() => setIsMobileMenuOpen(false)}>HOME</a></li>
-            <li><a href="#/" onClick={(e) => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('quem-somos')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>QUEM SOMOS</a></li>
-            <li><a href="#/" onClick={(e) => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>SOLUÇÕES</a></li>
-            <li><a href="#/" onClick={(e) => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CASES</a></li>
-            <li><a href="#/" onClick={(e) => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CLIENTES</a></li>
-            <li><a href="#/" onClick={(e) => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('impacto')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>IMPACTO</a></li>
-            <li><a href="#/" onClick={(e) => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CONTATO</a></li>
+            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('quem-somos')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>QUEM SOMOS</a></li>
+            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>SOLUÇÕES</a></li>
+            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CASES</a></li>
+            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CLIENTES</a></li>
+            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('impacto')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>IMPACTO</a></li>
+            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CONTATO</a></li>
           </ul>
 
           <div className="social-icons mobile-socials">
