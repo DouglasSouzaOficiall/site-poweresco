@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CasesCarousel.css';
 
 const casesData = [
@@ -31,6 +31,14 @@ const casesData = [
 
 const CasesCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev < casesData.length - 3 ? prev + 1 : 0));
+    }, 4000); // Navega a cada 4 segundos
+    
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : casesData.length - 3));
