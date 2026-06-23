@@ -135,7 +135,7 @@ const About: React.FC = () => {
             </ul>
             <div style={{ marginTop: '20px' }}>
               <button className="btn-orange-pill" onClick={() => setIsModalOpen(true)}>
-                Fale com a gente
+                Fale conosco
               </button>
             </div>
           </div>

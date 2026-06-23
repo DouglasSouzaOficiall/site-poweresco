@@ -1,6 +1,7 @@
 .about-section {
   padding-top: 80px;
-  padding-bottom: 0 !important; /* Remove spacing below stats container */
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important; /* Force zero margin below section */
   background-color: #fff;
 }
 
@@ -111,6 +112,7 @@
 /* Stats bar */
 .about-stats-container {
   margin-top: 80px;
+  margin-bottom: 0 !important; /* Force zero margin below stats container */
   background-color: #F48220;
   padding: 60px 20px;
   border-radius: 0; /* Remove rounding */

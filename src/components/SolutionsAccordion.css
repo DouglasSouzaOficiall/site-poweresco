@@ -1,6 +1,7 @@
 .solutions-accordion-section {
   background-color: #176628; /* Green background */
-  padding: 80px 0;
+  padding: 60px 0;
+  margin-top: 0 !important; /* Force zero margin above section */
   color: #fff;
 }
 
