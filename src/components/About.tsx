@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './About.css';
+import ContactModal from './ContactModal';
 
 interface CountUpProps {
   end: number;
@@ -79,6 +80,8 @@ const stats = [
 ];
 
 const About: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section id="quem-somos" className="about-section">
       <div className="container">
@@ -131,7 +134,9 @@ const About: React.FC = () => {
               <li>Forte atuação em ESG e desenvolvimento sustentável</li>
             </ul>
             <div style={{ marginTop: '20px' }}>
-              <button className="btn-orange-pill" style={{ backgroundColor: '#F48220', borderRadius: '50px', width: '120px', height: '40px', border: 'none' }}></button>
+              <button className="btn-orange-pill" onClick={() => setIsModalOpen(true)}>
+                Fale com a gente
+              </button>
             </div>
           </div>
         </div>
@@ -149,6 +154,8 @@ const About: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };

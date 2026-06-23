@@ -20,30 +20,59 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navigateToSection = (sectionId: string) => {
+    setIsMobileMenuOpen(false);
+    
+    // Check if we are currently on a subpage (hash starts with #/solucoes/)
+    const isSubpage = window.location.hash.startsWith('#/solucoes/');
+    
+    if (isSubpage) {
+      // Save section to scroll to in localStorage and redirect to Home
+      localStorage.setItem('scrollToSection', sectionId);
+      window.location.hash = '#/';
+    } else {
+      // Already on Home page, scroll directly
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const isHomeActive = !window.location.hash.startsWith('#/solucoes/');
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container nav-container">
         <div className="logo">
-          <a href="#/">
+          <a href="#/" onClick={() => navigateToSection('hero')}>
             <img src={logo} alt="Poweresco" />
           </a>
         </div>
 
         <div className={`desktop-nav ${isMobileMenuOpen ? 'open' : ''}`}>
           <ul>
-            <li><a href="#/" className="active" onClick={() => setIsMobileMenuOpen(false)}>HOME</a></li>
+            <li>
+              <a 
+                href="#/" 
+                className={isHomeActive ? 'active' : ''} 
+                onClick={(e) => { e.preventDefault(); navigateToSection('hero'); }}
+              >
+                HOME
+              </a>
+            </li>
             <span className="nav-separator">|</span>
-            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('quem-somos')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>QUEM SOMOS</a></li>
+            <li><a href="#/" onClick={(e) => { e.preventDefault(); navigateToSection('quem-somos'); }}>QUEM SOMOS</a></li>
             <span className="nav-separator">|</span>
-            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('solucoes')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>SOLUÇÕES</a></li>
+            <li><a href="#/" onClick={(e) => { e.preventDefault(); navigateToSection('solucoes'); }}>SOLUÇÕES</a></li>
             <span className="nav-separator">|</span>
-            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CASES</a></li>
+            <li><a href="#/" onClick={(e) => { e.preventDefault(); navigateToSection('cases'); }}>CASES</a></li>
             <span className="nav-separator">|</span>
-            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('clientes')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CLIENTES</a></li>
+            <li><a href="#/" onClick={(e) => { e.preventDefault(); navigateToSection('clientes'); }}>CLIENTES</a></li>
             <span className="nav-separator">|</span>
-            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('impacto')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>IMPACTO</a></li>
+            <li><a href="#/" onClick={(e) => { e.preventDefault(); navigateToSection('impacto'); }}>IMPACTO</a></li>
             <span className="nav-separator">|</span>
-            <li><a href="#/" onClick={() => { setIsMobileMenuOpen(false); setTimeout(() => document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' }), 100); }}>CONTATO</a></li>
+            <li><a href="#/" onClick={(e) => { e.preventDefault(); navigateToSection('contato'); }}>CONTATO</a></li>
           </ul>
 
           <div className="social-icons mobile-socials">
