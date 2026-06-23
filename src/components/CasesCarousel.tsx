@@ -5,17 +5,17 @@ const casesData = [
   {
     id: 'enel-compartilha',
     title: 'Enel Compartilha Energia na Escola',
-    img: '/site-poweresco/img/imagem01_casedesucessos.png'
+    img: '/site-poweresco/img/programas_educacionais.jpeg'
   },
   {
     id: 'e-educacao',
     title: 'E+ Educação',
-    img: '/site-poweresco/img/imagem01_casedesucessos.png'
+    img: '/site-poweresco/img/programas_educacionais.jpeg'
   },
   {
     id: 'programas-comunitarios',
     title: 'Programas Educacionais Comunitários',
-    img: '/site-poweresco/img/imagem01_casedesucessos.png'
+    img: '/site-poweresco/img/programas_educacionais_comunitarios.jpeg'
   },
   {
     id: 'case-4',
@@ -25,7 +25,7 @@ const casesData = [
   {
     id: 'case-5',
     title: 'Prefeituras Sustentáveis',
-    img: '/img/imagemprojetos.png'
+    img: '/site-poweresco/img/prefeituras.png'
   }
 ];
 
