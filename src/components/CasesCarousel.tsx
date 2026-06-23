@@ -5,7 +5,7 @@ const casesData = [
   {
     id: 'enel-compartilha',
     title: 'Enel Compartilha Energia na Escola',
-    img: '/site-poweresco/img/programas_educacionais.jpeg'
+    img: '/site-poweresco/img/enel_compartilha_escola.jpeg'
   },
   {
     id: 'e-educacao',
@@ -20,7 +20,7 @@ const casesData = [
   {
     id: 'case-4',
     title: 'Eficiência Hospitalar',
-    img: '/site-poweresco/img/imagem01_casedesucessos.png'
+    img: '/site-poweresco/img/eficiencia_hospitalar.png'
   },
   {
     id: 'case-5',
