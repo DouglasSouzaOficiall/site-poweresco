@@ -1,22 +1,24 @@
 import React, { useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import FloatingWhatsApp from '../components/FloatingWhatsApp';
-import CookieConsent from '../components/CookieConsent';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import Stats from '../components/Stats';
 import SolutionsAccordion from '../components/SolutionsAccordion';
 import CasesCarousel from '../components/CasesCarousel';
 import Partners from '../components/Partners';
 
-const Home: React.FC = () => {
+interface HomeProps {
+  onOpenContact: () => void;
+}
+
+const Home: React.FC<HomeProps> = ({ onOpenContact }) => {
+  // Handle cross-page scrolling from solution subpage
   useEffect(() => {
-    const targetSection = localStorage.getItem('scrollToSection');
-    if (targetSection) {
+    const scrollToSection = localStorage.getItem('scrollToSection');
+    if (scrollToSection) {
       localStorage.removeItem('scrollToSection');
-      // Wait for rendering to complete before scrolling
+      // Wait for DOM to fully mount/render
       setTimeout(() => {
-        const element = document.getElementById(targetSection);
+        const element = document.getElementById(scrollToSection);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
@@ -26,17 +28,12 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <SolutionsAccordion />
-        <CasesCarousel />
-        <Partners />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-      <CookieConsent />
+      <Hero onOpenContact={onOpenContact} />
+      <About onOpenContact={onOpenContact} />
+      <Stats />
+      <SolutionsAccordion />
+      <CasesCarousel />
+      <Partners />
     </>
   );
 };

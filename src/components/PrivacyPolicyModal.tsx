@@ -11,15 +11,17 @@ const PrivacyPolicyModal: React.FC<PrivacyPolicyModalProps> = ({ isOpen, onClose
   if (!isOpen) return null;
 
   return (
-    <div className="policy-modal-overlay" onClick={onClose}>
-      <div className="policy-modal-content" onClick={e => e.stopPropagation()}>
-        <button className="policy-modal-close" onClick={onClose}>
-          <X size={24} />
-        </button>
-        
-        <div className="policy-modal-body">
+    <div className="policy-overlay" onClick={onClose}>
+      <div className="policy-card animate-scale-in" onClick={(e) => e.stopPropagation()}>
+        <header className="policy-header">
           <h2>Política de Privacidade</h2>
-          <p className="policy-date">Última atualização: Maio de 2026</p>
+          <button className="policy-close-btn" onClick={onClose} aria-label="Fechar">
+            <X size={22} />
+          </button>
+        </header>
+
+        <div className="policy-body">
+          <p className="policy-date">Última atualização: Junho de 2026</p>
           
           <div className="policy-text">
             <h3>1. Introdução</h3>

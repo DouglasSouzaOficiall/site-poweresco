@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Send, Phone, Mail, MapPin } from 'lucide-react';
 import './ContactModal.css';
 
 interface ContactModalProps {
@@ -7,123 +7,205 @@ interface ContactModalProps {
   onClose: () => void;
 }
 
-const BRAZILIAN_STATES = [
-  'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 
-  'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 
-  'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
-];
-
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    whatsapp: '',
-    email: '',
-    state: '',
-    subject: '',
-    description: ''
-  });
-
   if (!isOpen) return null;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    telefone: '',
+    assunto: 'Interesse em soluções de Eficiência Energética',
+    mensagem: ''
+  });
+
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [success, setSuccess] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    if (name === 'description' && value.length > 100) return;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => {
+        const copy = { ...prev };
+        delete copy[name];
+        return copy;
+      });
+    }
+  };
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.nome.trim()) newErrors.nome = 'Nome é obrigatório.';
+    if (!formData.email.trim()) {
+      newErrors.email = 'E-mail é obrigatório.';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'E-mail inválido.';
+    }
+    if (!formData.mensagem.trim()) newErrors.mensagem = 'Mensagem é obrigatória.';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Send email using mailto as requested (temporary test email)
-    const targetEmail = "douglassouzaoficiall@gmail.com";
-    const mailSubject = `Contato via Site - ${formData.subject || 'Geral'}`;
-    const mailBody = `
-Nome: ${formData.name}
-WhatsApp: ${formData.whatsapp}
-E-mail: ${formData.email}
-Estado: ${formData.state}
-Assunto: ${formData.subject}
+    if (!validate()) return;
 
-Mensagem:
-${formData.description}
-    `;
+    // Build the mailto link parameters
+    const subject = encodeURIComponent(`Contato Site: ${formData.assunto}`);
+    const body = encodeURIComponent(
+      `Nome: ${formData.nome}\n` +
+      `E-mail: ${formData.email}\n` +
+      `Telefone: ${formData.telefone}\n\n` +
+      `Mensagem:\n${formData.mensagem}`
+    );
 
-    window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-    
-    // Close modal after triggering mailto
-    onClose();
+    window.location.href = `mailto:contato@poweresco.com.br?subject=${subject}&body=${body}`;
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+      onClose();
+      // Reset form
+      setFormData({
+        nome: '',
+        email: '',
+        telefone: '',
+        assunto: 'Interesse em soluções de Eficiência Energética',
+        mensagem: ''
+      });
+    }, 2000);
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>
-          <X size={24} />
+    <div className="contact-overlay" onClick={onClose}>
+      <div className="contact-card animate-scale-in" onClick={(e) => e.stopPropagation()}>
+        <button className="contact-close-btn" onClick={onClose} aria-label="Fechar">
+          <X size={22} />
         </button>
-        
-        <h2 className="modal-title">Fale Conosco</h2>
-        <p className="modal-subtitle">Preencha os dados abaixo e entraremos em contato.</p>
 
-        <form onSubmit={handleSubmit} className="contact-form">
-          <div className="form-group">
-            <label htmlFor="name">Nome completo</label>
-            <input type="text" id="name" name="name" required value={formData.name} onChange={handleChange} placeholder="Seu nome" />
-          </div>
+        <div className="contact-layout">
+          {/* Left panel: Info */}
+          <div className="contact-info-panel">
+            <h3 className="info-title">Vamos construir soluções juntos?</h3>
+            <p className="info-desc">
+              Entre em contato conosco para solicitar um diagnóstico energético ou saber mais sobre nossos projetos.
+            </p>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="whatsapp">WhatsApp</label>
-              <input type="tel" id="whatsapp" name="whatsapp" required value={formData.whatsapp} onChange={handleChange} placeholder="(00) 00000-0000" />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="email">E-mail</label>
-              <input type="email" id="email" name="email" required value={formData.email} onChange={handleChange} placeholder="seu@email.com" />
-            </div>
-          </div>
+            <div className="info-items">
+              <div className="info-item">
+                <Phone className="info-icon" size={20} />
+                <div>
+                  <h4>Telefone</h4>
+                  <p>(19) 3571-0000</p>
+                </div>
+              </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="state">Localidade (Estado)</label>
-              <select id="state" name="state" required value={formData.state} onChange={handleChange}>
-                <option value="" disabled>Selecione seu estado</option>
-                {BRAZILIAN_STATES.map(state => (
-                  <option key={state} value={state}>{state}</option>
-                ))}
-              </select>
-            </div>
+              <div className="info-item">
+                <Mail className="info-icon" size={20} />
+                <div>
+                  <h4>E-mail</h4>
+                  <p>contato@poweresco.com.br</p>
+                </div>
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="subject">Assunto</label>
-              <select id="subject" name="subject" required value={formData.subject} onChange={handleChange}>
-                <option value="" disabled>Selecione um assunto</option>
-                <option value="vagas">Vagas</option>
-                <option value="reclamacao">Reclamação</option>
-                <option value="elogios">Elogios</option>
-              </select>
+              <div className="info-item">
+                <MapPin className="info-icon" size={20} />
+                <div>
+                  <h4>Localização</h4>
+                  <p>Leme - SP | Atendimento Nacional</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="description">Descrição</label>
-            <textarea 
-              id="description" 
-              name="description" 
-              required 
-              rows={3}
-              value={formData.description} 
-              onChange={handleChange} 
-              placeholder="Descreva brevemente..."
-            />
-            <div className="char-count">
-              {formData.description.length}/100 caracteres
-            </div>
-          </div>
+          {/* Right panel: Form */}
+          <div className="contact-form-panel">
+            {success ? (
+              <div className="success-message">
+                <h3>Mensagem Preparada!</h3>
+                <p>O seu cliente de e-mail foi aberto para concluir o envio da mensagem. Obrigado!</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-group">
+                  <label htmlFor="nome">Nome Completo</label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleChange}
+                    className={errors.nome ? 'error' : ''}
+                    placeholder="Seu nome"
+                  />
+                  {errors.nome && <span className="error-text">{errors.nome}</span>}
+                </div>
 
-          <button type="submit" className="btn-submit">
-            Enviar Mensagem
-          </button>
-        </form>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="email">E-mail Corporativo</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={errors.email ? 'error' : ''}
+                      placeholder="nome@empresa.com"
+                    />
+                    {errors.email && <span className="error-text">{errors.email}</span>}
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="telefone">Telefone / WhatsApp</label>
+                    <input
+                      type="text"
+                      id="telefone"
+                      name="telefone"
+                      value={formData.telefone}
+                      onChange={handleChange}
+                      placeholder="(00) 00000-0000"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="assunto">Assunto</label>
+                  <select
+                    id="assunto"
+                    name="assunto"
+                    value={formData.assunto}
+                    onChange={handleChange}
+                  >
+                    <option value="Interesse em soluções de Eficiência Energética">Eficiência Energética</option>
+                    <option value="Projetos de Educação e Sustentabilidade">Educação e Conscientização</option>
+                    <option value="Engajamento Comunitário & ESG">Engajamento Comunitário & ESG</option>
+                    <option value="Parceria de Negócios / Concessionárias">Parcerias e Concessionárias</option>
+                    <option value="Outros assuntos">Outros assuntos</option>
+                  </select>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="mensagem">Como podemos ajudar?</label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    value={formData.mensagem}
+                    onChange={handleChange}
+                    className={errors.mensagem ? 'error' : ''}
+                    rows={4}
+                    placeholder="Descreva brevemente a sua necessidade..."
+                  ></textarea>
+                  {errors.mensagem && <span className="error-text">{errors.mensagem}</span>}
+                </div>
+
+                <button type="submit" className="btn-primary-orange w-full">
+                  Enviar Mensagem <Send size={16} />
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

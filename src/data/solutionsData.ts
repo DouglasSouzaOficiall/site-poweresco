@@ -8,7 +8,7 @@ export interface Solution {
   id: string;
   title: string;
   subtitle: string;
-  text?: string; // Mantido para compatibilidade com outros componentes se necessário
+  text?: string;
   paragraphs: string[];
   sections: SolutionSection[];
   images: string[];
@@ -48,9 +48,9 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
-      '/site-poweresco/img/imagem01_nossassolucoes.png',
-      '/site-poweresco/img/imagem01_casedesucessos.png',
-      '/site-poweresco/img/imagemquemsomos.png'
+      '/site-poweresco/img/programas_educacionais.jpeg',
+      '/site-poweresco/img/enel_compartilha_escola.jpeg',
+      '/site-poweresco/img/imagem01_nossassolucoes.png'
     ]
   },
   {
@@ -85,9 +85,9 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
-      '/site-poweresco/img/imagem01_nossassolucoes.png',
-      '/site-poweresco/img/imagem01_casedesucessos.png',
-      '/site-poweresco/img/imagemquemsomos.png'
+      '/site-poweresco/img/eficiencia_hospitalar.png',
+      '/site-poweresco/img/programas_educacionais_comunitarios.jpeg',
+      '/site-poweresco/img/prefeituras.png'
     ]
   },
   {
@@ -145,8 +145,8 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/programas_educacionais_comunitarios.jpeg',
       '/site-poweresco/img/imagem01_nossassolucoes.png',
-      '/site-poweresco/img/imagem01_casedesucessos.png',
       '/site-poweresco/img/imagemquemsomos.png'
     ]
   },
@@ -346,7 +346,7 @@ export const solutionsData: Solution[] = [
     text: 'Oferecemos gestão completa de projetos, desde a concepção estratégica até a execução operacional e avaliação de impacto.',
     paragraphs: [
       'Oferecemos gestão completa de projetos, desde a concepção estratégica até a execução operacional e avaliação de impacto.',
-      'Nossa metodologia garante qualidade, eficiência, controle e transparência in todas as etapas.'
+      'Nossa metodologia garante qualidade, eficiência, controle e transparência em todas as etapas.'
     ],
     sections: [
       {

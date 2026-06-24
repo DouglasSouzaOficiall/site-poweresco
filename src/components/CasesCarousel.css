@@ -1,138 +1,236 @@
-.cases-carousel-section {
-  padding: 80px 0;
-  background-color: #F48220; /* Orange connected to green */
+.cases-section {
+  background-color: var(--color-bg-light);
+  overflow: hidden;
 }
 
-.cases-carousel-box {
-  background-color: transparent;
-  border-radius: 0;
-  padding: 0;
+.cases-container {
   position: relative;
 }
 
 .cases-header {
-  margin-bottom: 40px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
 }
 
 .cases-title {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #333; /* Dark gray to match Figma */
-  margin-bottom: 10px;
+  color: var(--color-primary);
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
 }
 
-.cases-badge-white {
-  background-color: #A1D028; /* Light Green */
-  color: #fff;
-  padding: 4px 14px;
-  border-radius: 4px;
+@media (max-width: 768px) {
+  .cases-title {
+    font-size: 2rem;
+  }
 }
 
 .cases-subtitle {
   font-size: 1.1rem;
-  color: #fff;
-  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
-/* Carousel */
+/* Carousel Inner Layout */
 .carousel-wrapper {
-  display: flex;
-  align-items: center;
   position: relative;
-}
-
-.carousel-nav-btn {
-  background: transparent;
-  border: none;
-  font-size: 3rem;
-  color: #000;
-  cursor: pointer;
-  transition: transform 0.2s;
-  z-index: 2;
-  padding: 0 10px;
-}
-
-.carousel-nav-btn:hover {
-  transform: scale(1.1);
-}
-
-.carousel-track-container {
-  flex: 1;
+  background: var(--color-white);
+  border-radius: 24px;
   overflow: hidden;
-  margin: 0 10px;
-}
-
-.carousel-track {
-  display: flex;
-  gap: 20px;
-  transition: transform 0.3s ease;
-}
-
-.case-card {
-  flex: 1;
-  min-width: 0;
-  background-color: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.case-img-wrapper {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-.case-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.case-content {
-  padding: 20px;
-  text-align: center;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.case-card-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #176628;
-  margin-bottom: 20px;
-  text-align: center;
-  flex: 1;
-}
-
-.btn-ver-case {
-  background-color: #F48220;
-  color: #fff;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 50px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  margin: 0 auto;
-  transition: background-color 0.3s;
-}
-
-.btn-ver-case:hover {
-  background-color: #e07218;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(0, 104, 55, 0.04);
+  min-height: 480px;
 }
 
 @media (max-width: 992px) {
-  .carousel-track {
-    flex-direction: column;
-  }
   .carousel-wrapper {
-    flex-direction: column;
+    min-height: auto;
   }
+}
+
+.carousel-slide {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+  z-index: 1;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.slide-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+}
+
+@media (max-width: 992px) {
+  .slide-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Image Side */
+.slide-image-area {
+  position: relative;
+  height: 100%;
+  min-height: 350px;
+  overflow: hidden;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide-badge-category {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Information Side */
+.slide-info-area {
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 576px) {
+  .slide-info-area {
+    padding: 2rem;
+  }
+}
+
+.slide-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+
+@media (max-width: 768px) {
+  .slide-title {
+    font-size: 1.6rem;
+  }
+}
+
+.slide-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.slide-stat-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: rgba(244, 130, 32, 0.08);
+  border: 1px dashed rgba(244, 130, 32, 0.3);
+  padding: 12px 24px;
+  border-radius: 12px;
+  align-self: flex-start;
+}
+
+.slide-stat-icon {
+  color: var(--color-accent);
+}
+
+.stat-num {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+/* Navigation Buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-fast);
+  z-index: 10;
+}
+
+.carousel-nav-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-nav-btn.prev {
+  left: 1.5rem;
+}
+
+.carousel-nav-btn.next {
+  right: 1.5rem;
+}
+
+@media (max-width: 992px) {
   .carousel-nav-btn {
-    display: none;
+    top: 175px; /* Position relative to the image area only */
   }
+}
+
+/* Indicators */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 104, 55, 0.15);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.indicator-dot:hover {
+  background-color: rgba(0, 104, 55, 0.4);
+}
+
+.indicator-dot.active {
+  width: 32px;
+  border-radius: 10px;
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
 }

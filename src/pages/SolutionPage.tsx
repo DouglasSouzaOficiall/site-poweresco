@@ -1,136 +1,123 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import FloatingWhatsApp from '../components/FloatingWhatsApp';
-import CookieConsent from '../components/CookieConsent';
+import React, { useEffect } from 'react';
+import { ArrowLeft, ArrowUpRight, CheckSquare, ChevronRight, Phone } from 'lucide-react';
 import { solutionsData } from '../data/solutionsData';
 import './SolutionPage.css';
 
-const SolutionPage: React.FC = () => {
-  const [currentHash, setCurrentHash] = useState(window.location.hash);
+interface SolutionPageProps {
+  solutionId: string;
+  onOpenContact: () => void;
+}
 
+const SolutionPage: React.FC<SolutionPageProps> = ({ solutionId, onOpenContact }) => {
+  const solution = solutionsData.find((s) => s.id === solutionId);
+
+  // Scroll to top when solution page loads
   useEffect(() => {
-    const handleHash = () => {
-      setCurrentHash(window.location.hash);
-      window.scrollTo(0, 0);
-    };
-    window.addEventListener('hashchange', handleHash);
-    
-    // Scroll to top on initial render
     window.scrollTo(0, 0);
-    
-    return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  }, [solutionId]);
 
-  const solutionId = currentHash.split('/').pop() || '';
-  const solution = solutionsData.find(s => s.id === solutionId) || solutionsData[0];
-
-  // Helper function to dynamically add highlights to key terms in the title
-  const renderTitle = (title: string) => {
-    const words = title.split(' ');
-    if (words.length <= 1) return title;
-    
-    // Key words that we want to style with the orange background badge
-    const highlightWords = ['Conscientização', 'Eficiência', 'Comunitário', 'Empregabilidade', 'Circular', 'Transformação', 'ESG', 'Integrada'];
-    
+  if (!solution) {
     return (
-      <>
-        {words.map((word, idx) => {
-          // Remove punctuation to check the word
-          const cleanWord = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
-          const shouldHighlight = highlightWords.includes(cleanWord);
-          
-          return (
-            <React.Fragment key={idx}>
-              {shouldHighlight ? (
-                <>
-                  <br />
-                  <span className="bg-orange-highlight">{word}</span>
-                  <br />
-                </>
-              ) : (
-                word
-              )}
-              {idx < words.length - 1 ? ' ' : ''}
-            </React.Fragment>
-          );
-        })}
-      </>
+      <div className="solution-error-container">
+        <h2>Solução não encontrada</h2>
+        <a href="#/" className="btn-primary-orange">
+          <ArrowLeft size={18} /> Voltar para a Home
+        </a>
+      </div>
     );
+  }
+
+  const handleBackToSolutions = (e: React.MouseEvent) => {
+    e.preventDefault();
+    localStorage.setItem('scrollToSection', 'solucoes');
+    window.location.hash = '#/';
   };
 
   return (
-    <>
-      <Navbar />
-      
-      <main className="solution-page-main animate-fade-up">
-        {/* Header Hero */}
-        <div className="solution-hero">
-          <div className="container">
-            <h1 className="solution-hero-title">
-              {renderTitle(solution.title)}
-            </h1>
+    <div className="solution-page-wrapper">
+      {/* Editorial Header Banner */}
+      <header className="solution-header-banner">
+        <div className="solution-header-overlay"></div>
+        <div className="container solution-header-container">
+          {/* Breadcrumbs */}
+          <div className="breadcrumbs">
+            <a href="#/" className="breadcrumb-link">Home</a>
+            <ChevronRight size={14} className="breadcrumb-separator" />
+            <a href="#/" onClick={handleBackToSolutions} className="breadcrumb-link">Soluções</a>
+            <ChevronRight size={14} className="breadcrumb-separator" />
+            <span className="breadcrumb-current">{solution.title}</span>
           </div>
+
+          <h1 className="solution-page-title">{solution.title}</h1>
+          <p className="solution-page-subtitle">{solution.subtitle}</p>
         </div>
+      </header>
 
-        {/* Content Card (Overlapping the hero) */}
-        <div className="solution-content-wrapper">
-          <div className="container">
-            <div className="solution-white-card">
-              
-              <h2 className="solution-main-heading">
-                {solution.subtitle}
-              </h2>
-              
-              {solution.paragraphs && solution.paragraphs.map((p, idx) => (
-                <p key={idx} className={`solution-main-text ${idx === 0 ? 'bold-text' : ''}`}>
-                  {p}
-                </p>
-              ))}
-
-              <div className="solution-sections-grid">
-                {solution.sections && solution.sections.map((section, idx) => (
-                  <div key={idx} className="solution-section-card">
-                    <h3 className="solution-col-title">{section.title}</h3>
-                    {section.description && (
-                      <p className="solution-section-description">{section.description}</p>
-                    )}
-                    <ul className="solution-list">
-                      {section.items && section.items.map((item, itemIdx) => (
-                        <li key={itemIdx}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
+      {/* Main Grid Content */}
+      <section className="solution-detail-section">
+        <div className="container solution-detail-container">
+          <div className="solution-detail-grid">
+            {/* Left Content Area */}
+            <div className="solution-main-content">
+              <div className="solution-text-block">
+                {solution.paragraphs.map((p, idx) => (
+                  <p key={idx} className="solution-paragraph">{p}</p>
                 ))}
               </div>
 
-              {/* Bottom Image Carousel (Static representation with correct images) */}
-              {solution.images && solution.images.length > 0 && (
-                <div className="solution-carousel-section">
-                  <button className="solution-nav-btn prev" aria-label="Anterior">&#10094;</button>
-                  <div className="solution-images-container">
-                    {solution.images.map((img, idx) => (
-                      <img 
-                        key={idx} 
-                        src={img} 
-                        alt={`Galeria ${idx + 1}`} 
-                        className={`solution-gallery-img ${idx === 1 ? 'center-img' : ''}`} 
-                      />
-                    ))}
+              {/* Dynamic Image Grid */}
+              <div className="solution-images-grid">
+                {solution.images.map((img, idx) => (
+                  <div key={idx} className="solution-img-card">
+                    <img src={img} alt={`${solution.title} - Visual ${idx + 1}`} className="solution-img-element" />
                   </div>
-                  <button className="solution-nav-btn next" aria-label="Próxima">&#10095;</button>
-                </div>
-              )}
+                ))}
+              </div>
+            </div>
 
+            {/* Right Sidebar Area: Core Activities & Projects */}
+            <aside className="solution-sidebar">
+              {solution.sections.map((section, secIdx) => (
+                <div key={secIdx} className="sidebar-card">
+                  <h3 className="sidebar-card-title">{section.title}</h3>
+                  {section.description && (
+                    <p className="sidebar-card-description">{section.description}</p>
+                  )}
+                  <ul className="sidebar-list">
+                    {section.items.map((item, itemIdx) => (
+                      <li key={itemIdx} className="sidebar-list-item">
+                        <CheckSquare size={16} className="sidebar-list-icon" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Call-to-Action */}
+      <section className="solution-cta-section">
+        <div className="container solution-cta-container">
+          <div className="solution-cta-card">
+            <h2 className="solution-cta-title">Quer implementar esta solução no seu território?</h2>
+            <p className="solution-cta-text">
+              Nossa equipe técnica e especialistas comunitários estão prontos para planejar e executar o seu projeto.
+            </p>
+            <div className="solution-cta-buttons">
+              <button className="btn-primary-orange" onClick={onOpenContact}>
+                Falar com Especialista <Phone size={18} />
+              </button>
+              <a href="#/" onClick={handleBackToSolutions} className="btn-outline-white">
+                Ver outras soluções <ArrowUpRight size={18} />
+              </a>
             </div>
           </div>
         </div>
-      </main>
-
-      <Footer />
-      <FloatingWhatsApp />
-      <CookieConsent />
-    </>
+      </section>
+    </div>
   );
 };
 
