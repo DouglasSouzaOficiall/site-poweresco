@@ -89,7 +89,17 @@
   overflow: hidden;
 }
 
+@media (max-width: 992px) {
+  .slide-image-area {
+    height: 320px;
+    min-height: auto;
+  }
+}
+
 .slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
