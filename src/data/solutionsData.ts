@@ -85,6 +85,7 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/eficiencia_energetica.jpeg',
       '/site-poweresco/img/eficiencia_hospitalar.png',
       '/site-poweresco/img/programas_educacionais_comunitarios.jpeg',
       '/site-poweresco/img/prefeituras.png'
@@ -145,6 +146,7 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/engajamento_comunitario.png',
       '/site-poweresco/img/programas_educacionais_comunitarios.jpeg',
       '/site-poweresco/img/imagem01_nossassolucoes.png',
       '/site-poweresco/img/imagemquemsomos.png'
@@ -189,6 +191,7 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/desenvolvimento_social.jpeg',
       '/site-poweresco/img/imagem01_nossassolucoes.png',
       '/site-poweresco/img/imagem01_casedesucessos.png',
       '/site-poweresco/img/imagemquemsomos.png'
@@ -250,6 +253,7 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/desenvolvimento_social.jpeg',
       '/site-poweresco/img/imagem01_nossassolucoes.png',
       '/site-poweresco/img/imagem01_casedesucessos.png',
       '/site-poweresco/img/imagemquemsomos.png'
@@ -304,6 +308,7 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/desenvolvimento_humano.jpeg',
       '/site-poweresco/img/imagem01_nossassolucoes.png',
       '/site-poweresco/img/imagem01_casedesucessos.png',
       '/site-poweresco/img/imagemquemsomos.png'
@@ -334,6 +339,7 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/sustentabilidade_esg.jpeg',
       '/site-poweresco/img/imagem01_nossassolucoes.png',
       '/site-poweresco/img/imagem01_casedesucessos.png',
       '/site-poweresco/img/imagemquemsomos.png'
@@ -364,6 +370,7 @@ export const solutionsData: Solution[] = [
       }
     ],
     images: [
+      '/site-poweresco/img/gestao_projetos.jfif',
       '/site-poweresco/img/imagem01_nossassolucoes.png',
       '/site-poweresco/img/imagem01_casedesucessos.png',
       '/site-poweresco/img/imagemquemsomos.png'
