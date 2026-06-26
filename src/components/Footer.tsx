@@ -83,14 +83,41 @@ const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 <span>Telefone:</span>
                 <a href="tel:+551935710000">(19) 3571-0000</a>
               </li>
-              <li>
-                <span>Endereço:</span>
-                <p>Leme - SP | CEP: 13610-000</p>
-              </li>
             </ul>
             <button className="btn-primary-orange footer-cta" onClick={onOpenContact}>
               Solicitar Contato
             </button>
+          </div>
+        </div>
+
+        {/* Corporate Branches Section */}
+        <div className="footer-branches-section">
+          <h3 className="branches-section-title">Matriz e Filiais</h3>
+          <div className="branches-grid">
+            <div className="branch-card">
+              <h4>Matriz</h4>
+              <p>Rua Federação Paulista de Futebol, 799 - São Paulo/SP</p>
+            </div>
+            <div className="branch-card">
+              <h4>Filial CE</h4>
+              <p>Rua Barra Nova, nº 1000, Bairro Jardim das Oliveiras, CEP 60.820-160 - Fortaleza/CE</p>
+            </div>
+            <div className="branch-card">
+              <h4>Filial GO</h4>
+              <p>R OM01, 1969, Quadra 03 Lote 26, Bairro Res. Antônio Carlos Pires, CEP 74.693-168 - Goiânia/GO</p>
+            </div>
+            <div className="branch-card">
+              <h4>Filial RS</h4>
+              <p>Rua Doutor Barcelos, 1380, Sala 502, Centro, CEP 92.310-200 - Canoas/RS</p>
+            </div>
+            <div className="branch-card">
+              <h4>Filial AP</h4>
+              <p>Av. Mendonça Júnior, 1917, Bairro Central, CEP 68.900-020 - Macapá/AP</p>
+            </div>
+            <div className="branch-card">
+              <h4>Filial PA</h4>
+              <p>Rodovia BR 316, 411, Galpão G (Te Eurosono), Bairro Centro, CEP 67.030-000 - Ananindeua/PA</p>
+            </div>
           </div>
         </div>
 
