@@ -112,7 +112,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
                 <MapPin className="info-icon" size={20} />
                 <div>
                   <h4>Localização</h4>
-                  <p>Leme - SP | Atendimento Nacional</p>
+                  <p>Rua Federação Paulista de Futebol, 799 - São Paulo/SP</p>
                 </div>
               </div>
             </div>

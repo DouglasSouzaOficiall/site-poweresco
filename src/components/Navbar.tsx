@@ -363,18 +363,18 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
           </ul>
 
           <div className="social-icons-rebrand mobile-only-socials">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FacebookIcon size={20} /></a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><InstagramIcon size={20} /></a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><YoutubeIcon size={20} /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><LinkedinIcon size={20} /></a>
+            <a href="https://www.facebook.com/PowerEsco/" target="_blank" rel="noopener noreferrer"><FacebookIcon size={20} /></a>
+            <a href="https://www.instagram.com/poweresco/" target="_blank" rel="noopener noreferrer"><InstagramIcon size={20} /></a>
+            <a href="https://www.youtube.com/@canalpoweresco9650" target="_blank" rel="noopener noreferrer"><YoutubeIcon size={20} /></a>
+            <a href="https://br.linkedin.com/company/poweresco" target="_blank" rel="noopener noreferrer"><LinkedinIcon size={20} /></a>
           </div>
         </div>
 
         <div className="social-icons-rebrand desktop-only-socials">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FacebookIcon size={18} /></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><InstagramIcon size={18} /></a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><YoutubeIcon size={18} /></a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><LinkedinIcon size={18} /></a>
+          <a href="https://www.facebook.com/PowerEsco/" target="_blank" rel="noopener noreferrer"><FacebookIcon size={18} /></a>
+          <a href="https://www.instagram.com/poweresco/" target="_blank" rel="noopener noreferrer"><InstagramIcon size={18} /></a>
+          <a href="https://www.youtube.com/@canalpoweresco9650" target="_blank" rel="noopener noreferrer"><YoutubeIcon size={18} /></a>
+          <a href="https://br.linkedin.com/company/poweresco" target="_blank" rel="noopener noreferrer"><LinkedinIcon size={18} /></a>
         </div>
         
         <button 
