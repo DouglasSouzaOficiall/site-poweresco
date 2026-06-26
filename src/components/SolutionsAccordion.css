@@ -1,6 +1,6 @@
 .solutions-section {
-  background-color: var(--color-bg-light);
-  color: var(--color-text-dark);
+  background-color: var(--color-primary);
+  color: var(--color-white);
   padding: 8rem 0 !important;
   margin: 0 !important;
   border: none !important;
@@ -30,7 +30,7 @@
 .sidebar-title-3e {
   font-size: 1.8rem;
   font-weight: 800;
-  color: var(--color-text-dark);
+  color: var(--color-white);
   line-height: 1.15;
   font-family: var(--font-headings);
   position: relative;
@@ -58,7 +58,7 @@
 .sidebar-tab-item-3e {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
   transition: var(--transition-fast);
   position: relative;
@@ -71,7 +71,7 @@
 }
 
 .sidebar-tab-item-3e.active {
-  color: var(--color-accent);
+  color: var(--color-white);
   font-weight: 800;
   padding-left: 14px;
 }
@@ -88,16 +88,18 @@
   border-radius: 2px;
 }
 
-/* Right Content Card Split */
+/* Right Content Card Split - Glassmorphic Translucent Dark Green Card */
 .solutions-content-card-3e {
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.04);
   border-radius: 24px;
   box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(0, 104, 55, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   overflow: hidden;
   min-height: 480px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .card-info-side-3e {
@@ -112,7 +114,7 @@
   font-size: 1.8rem;
   font-weight: 800;
   line-height: 1.35;
-  color: var(--color-text-dark);
+  color: var(--color-white);
   font-family: var(--font-headings);
   letter-spacing: -0.5px;
 }
@@ -133,7 +135,7 @@
   align-items: flex-start;
   gap: 12px;
   font-size: 1.05rem;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
 }
 
@@ -159,7 +161,7 @@
 .btn-learn-more-3e {
   background: none;
   border: none;
-  color: var(--color-primary);
+  color: var(--color-white);
   font-weight: 700;
   font-family: var(--font-headings);
   font-size: 0.95rem;
@@ -216,22 +218,24 @@
   }
 
   .sidebar-tab-item-3e {
-    border: 1px solid rgba(0, 104, 55, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 50px;
     padding: 8px 18px;
     font-size: 0.9rem;
-    background-color: var(--color-white);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
     box-shadow: var(--shadow-sm);
   }
 
   .sidebar-tab-item-3e:hover {
-    background-color: rgba(244, 130, 32, 0.05);
+    background-color: rgba(244, 130, 32, 0.1);
     border-color: var(--color-accent);
+    color: var(--color-white);
   }
 
   .sidebar-tab-item-3e.active {
     background-color: var(--color-accent);
-    color: var(--color-white);
+    color: var(--color-white) !important;
     border-color: var(--color-accent);
     padding-left: 18px; /* equal padding for pills */
   }

@@ -76,7 +76,7 @@ const SolutionsAccordion: React.FC<SolutionsAccordionProps> = ({ onOpenContact }
           {/* Left Column: Vertical Navigation Sidebar */}
           <div className="solutions-sidebar-3e">
             <h2 className="sidebar-title-3e">
-              Conheça<br />nossas<br />soluções:
+              Soluções<br />da Power:
             </h2>
             <ul className="sidebar-tabs-3e">
               {tabNames.map((name, index) => {

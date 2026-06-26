@@ -60,19 +60,92 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
 
   const isHomeActive = !window.location.hash.startsWith('#/solucoes/');
 
+  // 8 Solutions mapping tailored simplified titles and inline SVG icons
   const solutionsList = [
-    { id: 'educacao', name: 'Educação e Conscientização' },
-    { id: 'eficiencia', name: 'Eficiência Energética' },
-    { id: 'engajamento', name: 'Engajamento Comunitário' },
-    { id: 'desenvolvimento-social', name: 'Desenvolvimento Social' },
-    { id: 'economia-circular', name: 'Economia Circular' },
-    { id: 'desenvolvimento-humano', name: 'Desenvolvimento Humano' },
-    { id: 'sustentabilidade-esg', name: 'Sustentabilidade e ESG' },
-    { id: 'gestao-projetos', name: 'Gestão de Projetos' }
+    { 
+      id: 'educacao', 
+      name: 'Educação e Conscientização',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+      )
+    },
+    { 
+      id: 'eficiencia', 
+      name: 'Eficiência Energética',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+      )
+    },
+    { 
+      id: 'engajamento', 
+      name: 'Engajamento Comunitário',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      )
+    },
+    { 
+      id: 'desenvolvimento-social', 
+      name: 'Desenvolvimento Social',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      )
+    },
+    { 
+      id: 'economia-circular', 
+      name: 'Economia Circular',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          <line x1="10" y1="11" x2="10" y2="17"></line>
+          <line x1="14" y1="11" x2="14" y2="17"></line>
+        </svg>
+      )
+    },
+    { 
+      id: 'desenvolvimento-humano', 
+      name: 'Desenvolvimento Humano',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+        </svg>
+      )
+    },
+    { 
+      id: 'sustentabilidade-esg', 
+      name: 'Sustentabilidade e ESG',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      )
+    },
+    { 
+      id: 'gestao-projetos', 
+      name: 'Gestão de Projetos',
+      icon: (
+        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+        </svg>
+      )
+    }
   ];
 
   const branchesList = [
-    { name: 'Matriz (SP)', target: 'impacto' }, // Matriz is in SP, can scroll to branches grid in footer
+    { name: 'Matriz (SP)', target: 'impacto' },
     { name: 'Filial Ceará (CE)', target: 'impacto' },
     { name: 'Filial Goiás (GO)', target: 'impacto' },
     { name: 'Filial Rio Grande do Sul (RS)', target: 'impacto' },
@@ -110,7 +183,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               </a>
             </li>
             
-            {/* SOLUTIONS DROPDOWN MENU */}
+            {/* SOLUTIONS DROPDOWN MENU (Mega Menu layout on desktop) */}
             <li className="nav-item-dropdown-container">
               <a 
                 href="#/" 
@@ -127,15 +200,17 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 SOLUÇÕES <ChevronDown size={14} className="dropdown-arrow-icon" />
               </a>
               
-              {/* Dropdown Box */}
-              <ul className={`nav-dropdown-menu ${mobileSolutionsOpen ? 'mobile-expanded' : ''}`}>
+              {/* Dropdown Mega Menu Box */}
+              <ul className={`nav-dropdown-menu solutions-mega-menu ${mobileSolutionsOpen ? 'mobile-expanded' : ''}`}>
                 {solutionsList.map((sol) => (
                   <li key={sol.id}>
                     <a 
                       href="#/" 
                       onClick={(e) => { e.preventDefault(); handleSolutionLinkClick(sol.id); }}
+                      className="mega-menu-item-link"
                     >
-                      {sol.name}
+                      {sol.icon}
+                      <span className="mega-menu-item-text">{sol.name}</span>
                     </a>
                   </li>
                 ))}
