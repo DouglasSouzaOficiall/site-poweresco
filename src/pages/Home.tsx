@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = ({ onOpenContact }) => {
       <Hero onOpenContact={onOpenContact} />
       <About onOpenContact={onOpenContact} />
       <Stats />
-      <SolutionsAccordion />
+      <SolutionsAccordion onOpenContact={onOpenContact} />
       <CasesCarousel />
       <Partners />
     </>
