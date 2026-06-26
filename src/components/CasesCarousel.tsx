@@ -50,7 +50,7 @@ const CasesCarousel: React.FC = () => {
       title: 'Parcerias com Prefeituras',
       category: 'Gestão Integrada',
       description: 'Modernização de frotas, adequação tarifária e eficiência de prédios administrativos em dezenas de municípios integrando agendas ESG públicas.',
-      image: '/site-poweresco/img/prefeituras.png',
+      image: '/site-poweresco/img/parcerias_prefeituras.jpg',
       stats: '+250 cidades atendidas'
     }
   ];
