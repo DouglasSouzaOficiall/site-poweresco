@@ -119,13 +119,53 @@
   min-width: 280px;
 }
 
-/* Solutions Mega Menu side-by-side styles */
-.nav-dropdown-menu.solutions-mega-menu {
+/* Solutions and Contact Mega Menu side-by-side styles */
+.nav-dropdown-menu.solutions-mega-menu,
+.nav-dropdown-menu.contact-mega-menu {
   min-width: 580px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
   padding: 1.5rem;
+}
+
+.mega-menu-full-width-header {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 4px 14px 10px;
+  letter-spacing: 0.8px;
+  border-bottom: 1px solid rgba(0, 104, 55, 0.08);
+  margin-bottom: 8px;
+}
+
+.mega-menu-full-width-divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background-color: rgba(0, 104, 55, 0.08);
+  margin: 10px 0;
+  width: 100%;
+}
+
+.mega-menu-full-width-item {
+  grid-column: 1 / -1;
+}
+
+.mega-menu-full-width-item .dropdown-cta-link {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 104, 55, 0.04);
+  border: 1px dashed rgba(0, 104, 55, 0.2) !important;
+  transition: all 0.3s ease;
+}
+
+.mega-menu-full-width-item .dropdown-cta-link:hover {
+  background-color: rgba(0, 104, 55, 0.08) !important;
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
 }
 
 .mega-menu-item-link {
@@ -339,15 +379,41 @@
     padding: 0.5rem 0;
   }
 
-  .nav-dropdown-menu.solutions-mega-menu {
+  .nav-dropdown-menu.solutions-mega-menu,
+  .nav-dropdown-menu.contact-mega-menu {
     grid-template-columns: 1fr;
     padding: 0;
     gap: 2px;
   }
 
-  .nav-dropdown-menu.solutions-mega-menu.mobile-expanded {
+  .nav-dropdown-menu.solutions-mega-menu.mobile-expanded,
+  .nav-dropdown-menu.contact-mega-menu.mobile-expanded {
     height: auto;
     padding: 0.5rem 0;
+  }
+
+  .mega-menu-full-width-header {
+    grid-column: auto;
+    color: rgba(255, 255, 255, 0.4) !important;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 0;
+    margin-bottom: 4px;
+  }
+
+  .mega-menu-full-width-divider {
+    grid-column: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 8px 0;
+  }
+
+  .mega-menu-full-width-item {
+    grid-column: auto;
+  }
+
+  .mega-menu-full-width-item .dropdown-cta-link {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px dashed rgba(255, 255, 255, 0.15) !important;
   }
 
   .nav-dropdown-menu a {

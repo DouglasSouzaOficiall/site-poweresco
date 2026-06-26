@@ -144,13 +144,68 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
     }
   ];
 
+  // Branches list mapped with target IDs and inline map-pin SVGs
   const branchesList = [
-    { name: 'Matriz (SP)', target: 'impacto' },
-    { name: 'Filial Ceará (CE)', target: 'impacto' },
-    { name: 'Filial Goiás (GO)', target: 'impacto' },
-    { name: 'Filial Rio Grande do Sul (RS)', target: 'impacto' },
-    { name: 'Filial Amapá (AP)', target: 'impacto' },
-    { name: 'Filial Pará (PA)', target: 'impacto' }
+    { 
+      name: 'Matriz (SP)', 
+      target: 'impacto',
+      icon: (
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      )
+    },
+    { 
+      name: 'Filial Ceará (CE)', 
+      target: 'impacto',
+      icon: (
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      )
+    },
+    { 
+      name: 'Filial Goiás (GO)', 
+      target: 'impacto',
+      icon: (
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      )
+    },
+    { 
+      name: 'Filial Rio Grande do Sul (RS)', 
+      target: 'impacto',
+      icon: (
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      )
+    },
+    { 
+      name: 'Filial Amapá (AP)', 
+      target: 'impacto',
+      icon: (
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      )
+    },
+    { 
+      name: 'Filial Pará (PA)', 
+      target: 'impacto',
+      icon: (
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      )
+    }
   ];
 
   return (
@@ -242,7 +297,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               </a>
             </li>
 
-            {/* CONTACTS DROPDOWN MENU */}
+            {/* CONTACTS DROPDOWN MENU (Mega Menu layout on desktop) */}
             <li className="nav-item-dropdown-container">
               <a 
                 href="#/" 
@@ -259,9 +314,9 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                 CONTATO <ChevronDown size={14} className="dropdown-arrow-icon" />
               </a>
               
-              {/* Dropdown Box */}
-              <ul className={`nav-dropdown-menu contact-dropdown ${mobileContactOpen ? 'mobile-expanded' : ''}`}>
-                <li className="dropdown-section-header">Matriz & Filiais</li>
+              {/* Dropdown Mega Menu Box */}
+              <ul className={`nav-dropdown-menu contact-mega-menu ${mobileContactOpen ? 'mobile-expanded' : ''}`}>
+                <li className="mega-menu-full-width-header">Matriz & Filiais</li>
                 {branchesList.map((branch, idx) => (
                   <li key={idx}>
                     <a 
@@ -277,23 +332,29 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
                           }
                         }, 300);
                       }}
+                      className="mega-menu-item-link"
                     >
-                      {branch.name}
+                      {branch.icon}
+                      <span className="mega-menu-item-text">{branch.name}</span>
                     </a>
                   </li>
                 ))}
-                <li className="dropdown-divider"></li>
-                <li>
+                <li className="mega-menu-full-width-divider"></li>
+                <li className="mega-menu-full-width-item">
                   <a 
                     href="#/" 
-                    className="dropdown-cta-link"
+                    className="dropdown-cta-link mega-menu-item-link"
                     onClick={(e) => { 
                       e.preventDefault(); 
                       setIsMobileMenuOpen(false);
                       onOpenContact(); 
                     }}
                   >
-                    Fale Conosco
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" className="dropdown-item-icon-3e">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <span className="mega-menu-item-text dropdown-cta-text">Fale Conosco</span>
                   </a>
                 </li>
               </ul>
