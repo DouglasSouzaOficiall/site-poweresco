@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import './Navbar.css';
 
 // Inline SVGs to avoid version conflicts in lucide-react
@@ -16,9 +16,15 @@ const LinkedinIcon = ({ size }: { size: number }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
 );
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenContact: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const [mobileContactOpen, setMobileContactOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +36,8 @@ const Navbar: React.FC = () => {
 
   const navigateToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
+    setMobileSolutionsOpen(false);
+    setMobileContactOpen(false);
     const isSubpage = window.location.hash.startsWith('#/solucoes/');
     
     if (isSubpage) {
@@ -43,7 +51,34 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const handleSolutionLinkClick = (id: string) => {
+    setIsMobileMenuOpen(false);
+    setMobileSolutionsOpen(false);
+    window.location.hash = `#/solucoes/${id}`;
+    window.scrollTo(0, 0);
+  };
+
   const isHomeActive = !window.location.hash.startsWith('#/solucoes/');
+
+  const solutionsList = [
+    { id: 'educacao', name: 'Educação e Conscientização' },
+    { id: 'eficiencia', name: 'Eficiência Energética' },
+    { id: 'engajamento', name: 'Engajamento Comunitário' },
+    { id: 'desenvolvimento-social', name: 'Desenvolvimento Social' },
+    { id: 'economia-circular', name: 'Economia Circular' },
+    { id: 'desenvolvimento-humano', name: 'Desenvolvimento Humano' },
+    { id: 'sustentabilidade-esg', name: 'Sustentabilidade e ESG' },
+    { id: 'gestao-projetos', name: 'Gestão de Projetos' }
+  ];
+
+  const branchesList = [
+    { name: 'Matriz (SP)', target: 'impacto' }, // Matriz is in SP, can scroll to branches grid in footer
+    { name: 'Filial Ceará (CE)', target: 'impacto' },
+    { name: 'Filial Goiás (GO)', target: 'impacto' },
+    { name: 'Filial Rio Grande do Sul (RS)', target: 'impacto' },
+    { name: 'Filial Amapá (AP)', target: 'impacto' },
+    { name: 'Filial Pará (PA)', target: 'impacto' }
+  ];
 
   return (
     <nav className={`navbar-rebrand ${isScrolled ? 'scrolled' : ''}`}>
@@ -54,6 +89,7 @@ const Navbar: React.FC = () => {
           </a>
         </div>
 
+        {/* Desktop and Mobile Menu Container */}
         <div className={`desktop-nav-rebrand ${isMobileMenuOpen ? 'open' : ''}`}>
           <ul>
             <li>
@@ -73,14 +109,39 @@ const Navbar: React.FC = () => {
                 QUEM SOMOS
               </a>
             </li>
-            <li>
+            
+            {/* SOLUTIONS DROPDOWN MENU */}
+            <li className="nav-item-dropdown-container">
               <a 
                 href="#/" 
-                onClick={(e) => { e.preventDefault(); navigateToSection('solucoes'); }}
+                onClick={(e) => { 
+                  e.preventDefault(); 
+                  if (window.innerWidth <= 992) {
+                    setMobileSolutionsOpen(!mobileSolutionsOpen);
+                  } else {
+                    navigateToSection('solucoes');
+                  }
+                }}
+                className="dropdown-trigger-link"
               >
-                SOLUÇÕES
+                SOLUÇÕES <ChevronDown size={14} className="dropdown-arrow-icon" />
               </a>
+              
+              {/* Dropdown Box */}
+              <ul className={`nav-dropdown-menu ${mobileSolutionsOpen ? 'mobile-expanded' : ''}`}>
+                {solutionsList.map((sol) => (
+                  <li key={sol.id}>
+                    <a 
+                      href="#/" 
+                      onClick={(e) => { e.preventDefault(); handleSolutionLinkClick(sol.id); }}
+                    >
+                      {sol.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </li>
+
             <li>
               <a 
                 href="#/" 
@@ -105,14 +166,64 @@ const Navbar: React.FC = () => {
                 IMPACTO
               </a>
             </li>
-            <li>
+
+            {/* CONTACTS DROPDOWN MENU */}
+            <li className="nav-item-dropdown-container">
               <a 
                 href="#/" 
-                onClick={(e) => { e.preventDefault(); navigateToSection('contato'); }}
+                onClick={(e) => { 
+                  e.preventDefault(); 
+                  if (window.innerWidth <= 992) {
+                    setMobileContactOpen(!mobileContactOpen);
+                  } else {
+                    navigateToSection('contato');
+                  }
+                }}
+                className="dropdown-trigger-link"
               >
-                CONTATO
+                CONTATO <ChevronDown size={14} className="dropdown-arrow-icon" />
               </a>
+              
+              {/* Dropdown Box */}
+              <ul className={`nav-dropdown-menu contact-dropdown ${mobileContactOpen ? 'mobile-expanded' : ''}`}>
+                <li className="dropdown-section-header">Matriz & Filiais</li>
+                {branchesList.map((branch, idx) => (
+                  <li key={idx}>
+                    <a 
+                      href="#/" 
+                      onClick={(e) => { 
+                        e.preventDefault(); 
+                        navigateToSection(branch.target); 
+                        // Delay scroll to branches grid at bottom
+                        setTimeout(() => {
+                          const branchesEl = document.querySelector('.footer-branches-section');
+                          if (branchesEl) {
+                            branchesEl.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }, 300);
+                      }}
+                    >
+                      {branch.name}
+                    </a>
+                  </li>
+                ))}
+                <li className="dropdown-divider"></li>
+                <li>
+                  <a 
+                    href="#/" 
+                    className="dropdown-cta-link"
+                    onClick={(e) => { 
+                      e.preventDefault(); 
+                      setIsMobileMenuOpen(false);
+                      onOpenContact(); 
+                    }}
+                  >
+                    Fale Conosco
+                  </a>
+                </li>
+              </ul>
             </li>
+
           </ul>
 
           <div className="social-icons-rebrand mobile-only-socials">
@@ -132,7 +243,11 @@ const Navbar: React.FC = () => {
         
         <button 
           className={`mobile-menu-btn-rebrand ${isMobileMenuOpen ? 'active' : ''}`} 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+          onClick={() => {
+            setIsMobileMenuOpen(!isMobileMenuOpen);
+            setMobileSolutionsOpen(false);
+            setMobileContactOpen(false);
+          }} 
           aria-label="Menu"
         >
           {isMobileMenuOpen ? <X size={26} color="#fff" /> : <Menu size={26} color={isScrolled ? '#122119' : '#fff'} />}

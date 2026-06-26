@@ -50,7 +50,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
+      <Navbar onOpenContact={openContact} />
       
       <main className="main-content-area">
         {renderContent()}
