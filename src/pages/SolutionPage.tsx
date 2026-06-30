@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { ArrowLeft, ArrowUpRight, CheckSquare, ChevronRight, Phone } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { ArrowLeft, ArrowUpRight, CheckSquare, ChevronRight, ChevronLeft, Phone } from 'lucide-react';
 import { solutionsData } from '../data/solutionsData';
+import { carouselImages } from '../data/carouselImages';
 import './SolutionPage.css';
 
 interface SolutionPageProps {
@@ -10,10 +11,12 @@ interface SolutionPageProps {
 
 const SolutionPage: React.FC<SolutionPageProps> = ({ solutionId, onOpenContact }) => {
   const solution = solutionsData.find((s) => s.id === solutionId);
+  const [activeImageIdx, setActiveImageIdx] = useState(0);
 
   // Scroll to top when solution page loads
   useEffect(() => {
     window.scrollTo(0, 0);
+    setActiveImageIdx(0);
   }, [solutionId]);
 
   if (!solution) {
@@ -26,6 +29,25 @@ const SolutionPage: React.FC<SolutionPageProps> = ({ solutionId, onOpenContact }
       </div>
     );
   }
+
+  const images = carouselImages[solutionId] || [];
+  const displayImages = images.length > 0 ? images : solution.images;
+
+  useEffect(() => {
+    if (displayImages.length <= 1) return;
+    const interval = setInterval(() => {
+      setActiveImageIdx((prev) => (prev + 1) % displayImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [displayImages.length]);
+
+  const handlePrevImage = () => {
+    setActiveImageIdx((prev) => (prev - 1 + displayImages.length) % displayImages.length);
+  };
+
+  const handleNextImage = () => {
+    setActiveImageIdx((prev) => (prev + 1) % displayImages.length);
+  };
 
   const handleBackToSolutions = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -65,13 +87,56 @@ const SolutionPage: React.FC<SolutionPageProps> = ({ solutionId, onOpenContact }
                 ))}
               </div>
 
-              {/* Dynamic Image Grid */}
-              <div className="solution-images-grid">
-                {solution.images.map((img, idx) => (
-                  <div key={idx} className="solution-img-card">
-                    <img src={img} alt={`${solution.title} - Visual ${idx + 1}`} className="solution-img-element" />
+              {/* Image Carousel */}
+              <div className="solution-carousel-wrapper">
+                <h3 className="solution-carousel-title">Galeria de Imagens</h3>
+                <div className="solution-carousel-container">
+                  <div className="solution-carousel-slide">
+                    <img 
+                      src={displayImages[activeImageIdx]} 
+                      alt={`${solution.title} - Imagem ${activeImageIdx + 1}`} 
+                      className="solution-carousel-img" 
+                    />
+                    <div className="solution-carousel-counter">
+                      {activeImageIdx + 1} / {displayImages.length}
+                    </div>
                   </div>
-                ))}
+
+                  {displayImages.length > 1 && (
+                    <>
+                      <button 
+                        className="sol-carousel-btn prev" 
+                        onClick={handlePrevImage} 
+                        aria-label="Imagem anterior"
+                      >
+                        <ChevronLeft size={24} />
+                      </button>
+                      <button 
+                        className="sol-carousel-btn next" 
+                        onClick={handleNextImage} 
+                        aria-label="Próxima imagem"
+                      >
+                        <ChevronRight size={24} />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {displayImages.length > 1 && (
+                  <div className="solution-carousel-indicators">
+                    {displayImages.slice(0, 15).map((_, idx) => (
+                      <button
+                        key={idx}
+                        className={`sol-indicator-dot ${idx === activeImageIdx ? 'active' : ''}`}
+                        onClick={() => setActiveImageIdx(idx)}
+                        aria-label={`Ir para imagem ${idx + 1}`}
+                      />
+                    ))}
+                    {displayImages.length > 15 && (
+                      <span className="sol-indicators-more">...</span>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
